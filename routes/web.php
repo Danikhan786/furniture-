@@ -18,6 +18,8 @@ Auth::routes();
  Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
  Route::get('/products', [FrontendController::class, 'products'])->name('products');
  Route::get('/productDetail', [FrontendController::class, 'productDetail'])->name('productDetail');
+ Route::get('/cart', [FrontendController::class, 'cart'])->name('cart'); 
+ Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout'); 
  Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 
 

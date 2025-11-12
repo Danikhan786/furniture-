@@ -23,6 +23,13 @@ class frontendController extends Controller
     {
         return view('frontend.productDetail');
     }
+    public function cart()
+    {
+        return view('frontend.cart');
+    }
+    public function checkout(){
+        return view('frontend.checkout');
+    }
     public function contact()
     {
         return view('frontend.contactus');

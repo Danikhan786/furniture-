@@ -8,6 +8,7 @@
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="gettemplates.co" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -57,7 +58,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="{{ route('index') }}">Shop.</a></div>
+					<div id="fh5co-logo"><a href="{{ route('index') }}">oasismeubles</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
@@ -73,15 +74,17 @@
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
-						<li class="search">
+						{{-- <li class="search">
 							<div class="input-group">
 						      <input type="text" placeholder="Search..">
 						      <span class="input-group-btn">
 						        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
 						      </span>
 						    </div>
-						</li>
-						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+						</li> --}}
+						<li class="shopping-cart"><a href="{{route('login')}}" class="cart"><i class="fa fa-user"></i></a></li>
+						<li class="shopping-cart"><a href="{{route('cart')}}" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+					
 					</ul>
 				</div>
 			</div>
