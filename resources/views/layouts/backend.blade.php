@@ -74,21 +74,33 @@
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
               <a class="nav-link" href="index.html">
-                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="icon-bg"><i class="mdi mdi-view-dashboard menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
+                <span class="icon-bg"><i class="mdi mdi-package-variant menu-icon"></i></span>
+                <span class="menu-title">Products</span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Tables</span>
+                <span class="icon-bg"><i class="mdi mdi-cart menu-icon"></i></span>
+                <span class="menu-title">Orders</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/tables/basic-table.html">
+                <span class="icon-bg"><i class="mdi mdi-tag menu-icon"></i></span>
+                <span class="menu-title">Coupons</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/tables/basic-table.html">
+                <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
+                <span class="menu-title">Customers</span>
               </a>
             </li>
 
