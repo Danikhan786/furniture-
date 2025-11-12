@@ -47,16 +47,22 @@
                   <img src="../../backend/assets/images/faces/face28.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Henry Klein</p>
+                  <p class="mb-1 text-black">{{Auth::user()->name}}</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
 
                 <div class="p-2">
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                    <span>Log Out</span>
-                    <i class="mdi mdi-logout ml-1"></i>
-                  </a>
+                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                  <span>Log Out</span>
+                  <i class="mdi mdi-logout ml-1"></i>
+               </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                 </div>
               </div>
             </li>
