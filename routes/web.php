@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\backendController;
+use App\Http\Controllers\ProductController;
 
 
 // Route::get('/', function () {
@@ -44,4 +45,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
     Route::get('/admin/dashboard', [backendController::class, 'index'])->name('admin.dashboard');
+    
+    // Product Routes
+    Route::resource('admin/products', ProductController::class)->names([
+        'index' => 'admin.products.index',
+        'create' => 'admin.products.create',
+        'store' => 'admin.products.store',
+        'edit' => 'admin.products.edit',
+        'update' => 'admin.products.update',
+        'destroy' => 'admin.products.destroy',
+    ]);
+    
 });

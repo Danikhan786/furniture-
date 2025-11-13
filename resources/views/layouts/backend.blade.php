@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Connect Plus</title>
+    <title>Admin Dashboard</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('backend/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
@@ -22,8 +22,8 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="../../backend/assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../backend/assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="{{route('admin.dashboard')}}"><img src="../../../backend/assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="{{route('admin.dashboard')}}"><img src="../../../backend/assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -44,7 +44,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="../../backend/assets/images/faces/face28.png" alt="image">
+                  <img src="../../../backend/assets/images/faces/face28.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black">{{Auth::user()->name}}</p>
@@ -79,13 +79,19 @@
           <ul class="nav position-relative">
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <span class="icon-bg"><i class="mdi mdi-view-dashboard menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/forms/basic_elements.html">
+              <a class="nav-link" href="{{ route('admin.products.index') }}">
+                <span class="icon-bg"><i class="mdi mdi-package-variant menu-icon"></i></span>
+                <span class="menu-title">Categories</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.products.index') }}">
                 <span class="icon-bg"><i class="mdi mdi-package-variant menu-icon"></i></span>
                 <span class="menu-title">Products</span>
               </a>
