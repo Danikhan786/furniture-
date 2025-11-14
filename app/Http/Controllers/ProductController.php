@@ -10,26 +10,6 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-    public function categories()
-    {
-        return view('backend.categories.index');
-    }
-    public function createCategory()
-    {
-        return view('backend.categories.create');
-    }
-    public function editCategory($id)
-    {
-        return view('backend.categories.edit', compact('id'));
-    }
-    public function updateCategory(Request $request, $id)
-    {
-        return view('backend.categories.index');
-    }
-    public function destroyCategory($id)
-    {
-        return view('backend.categories.index');
-    }
     /**
      * Display a listing of the products.
      */

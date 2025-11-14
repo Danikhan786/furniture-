@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\backendController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 
 // Route::get('/', function () {
@@ -46,7 +47,17 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
     Route::get('/admin/dashboard', [backendController::class, 'index'])->name('admin.dashboard');
     
-    // Product Routes
+    // Category Routes
+    Route::resource('admin/categories', CategoryController::class)->names([
+        'index' => 'admin.categories.index',
+        'create' => 'admin.categories.create',
+        'store' => 'admin.categories.store',
+        'edit' => 'admin.categories.edit',
+        'update' => 'admin.categories.update',
+        'destroy' => 'admin.categories.destroy',
+    ]);
+
+
     Route::resource('admin/products', ProductController::class)->names([
         'index' => 'admin.products.index',
         'create' => 'admin.products.create',
@@ -55,5 +66,4 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         'update' => 'admin.products.update',
         'destroy' => 'admin.products.destroy',
     ]);
-    
 });

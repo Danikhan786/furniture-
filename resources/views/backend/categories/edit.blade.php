@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="card-title mb-0">Edit Product</h4>
-                            <a href="{{ route('admin.products.index') }}" class="btn btn-secondary btn-sm">
-                                <i class="mdi mdi-arrow-left"></i> Back to Products
+                            <h4 class="card-title mb-0">Edit Category</h4>
+                            <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary btn-sm">
+                                <i class="mdi mdi-arrow-left"></i> Back to Categories
                             </a>
                         </div>
 
@@ -26,100 +26,22 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('admin.products.update', $product->id ?? 1) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="name">Product Name <span class="text-danger">*</span></label>
+                                        <label for="name">Category Name <span class="text-danger">*</span></label>
                                         <input type="text" 
                                                class="form-control @error('name') is-invalid @enderror" 
                                                id="name" 
                                                name="name" 
-                                               value="{{ old('name', $product->name ?? '') }}" 
-                                               placeholder="Enter product name"
+                                               value="{{ old('name', $category->name) }}" 
+                                               placeholder="Enter category name"
                                                required>
                                         @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="category">Category <span class="text-danger">*</span></label>
-                                        <select class="form-control @error('category') is-invalid @enderror" 
-                                                id="category" 
-                                                name="category" 
-                                                required>
-                                            <option value="">Select Category</option>
-                                            <option value="chairs" {{ old('category', $product->category ?? '') == 'chairs' ? 'selected' : '' }}>Chairs</option>
-                                            <option value="tables" {{ old('category', $product->category ?? '') == 'tables' ? 'selected' : '' }}>Tables</option>
-                                            <option value="sofas" {{ old('category', $product->category ?? '') == 'sofas' ? 'selected' : '' }}>Sofas</option>
-                                            <option value="cabinets" {{ old('category', $product->category ?? '') == 'cabinets' ? 'selected' : '' }}>Cabinets</option>
-                                            <option value="lighting" {{ old('category', $product->category ?? '') == 'lighting' ? 'selected' : '' }}>Lighting</option>
-                                            <option value="decor" {{ old('category', $product->category ?? '') == 'decor' ? 'selected' : '' }}>Decor</option>
-                                            <option value="accessories" {{ old('category', $product->category ?? '') == 'accessories' ? 'selected' : '' }}>Accessories</option>
-                                        </select>
-                                        @error('category')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="description">Description <span class="text-danger">*</span></label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" 
-                                          id="description" 
-                                          name="description" 
-                                          rows="5" 
-                                          placeholder="Enter product description"
-                                          required>{{ old('description', $product->description ?? '') }}</textarea>
-                                @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="price">Price ($) <span class="text-danger">*</span></label>
-                                        <input type="number" 
-                                               class="form-control @error('price') is-invalid @enderror" 
-                                               id="price" 
-                                               name="price" 
-                                               value="{{ old('price', $product->price ?? '') }}" 
-                                               step="0.01" 
-                                               min="0"
-                                               placeholder="0.00"
-                                               required>
-                                        @error('price')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="stock">Stock Quantity <span class="text-danger">*</span></label>
-                                        <input type="number" 
-                                               class="form-control @error('stock') is-invalid @enderror" 
-                                               id="stock" 
-                                               name="stock" 
-                                               value="{{ old('stock', $product->stock ?? '') }}" 
-                                               min="0"
-                                               placeholder="0"
-                                               required>
-                                        @error('stock')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -133,8 +55,8 @@
                                                 id="status" 
                                                 name="status" 
                                                 required>
-                                            <option value="active" {{ old('status', $product->status ?? '') == 'active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive" {{ old('status', $product->status ?? '') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                            <option value="active" {{ old('status', $category->status) == 'active' ? 'selected' : '' }}>Active</option>
+                                            <option value="inactive" {{ old('status', $category->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                         @error('status')
                                             <span class="invalid-feedback" role="alert">
@@ -146,10 +68,50 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Product Image</label>
-                                @if(isset($product->image) && $product->image)
+                                <label for="parent_id">Parent Category (Optional - Leave empty for main category)</label>
+                                <select class="form-control @error('parent_id') is-invalid @enderror" 
+                                        id="parent_id" 
+                                        name="parent_id">
+                                    <option value="">None (Main Category)</option>
+                                    @foreach($parentCategories ?? [] as $parent)
+                                        <option value="{{ $parent->id }}" {{ old('parent_id', $category->parent_id) == $parent->id ? 'selected' : '' }}>
+                                            {{ $parent->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <small class="form-text text-muted">
+                                    @if($category->isSubcategory() && $category->parent)
+                                        Current parent: <strong>{{ $category->parent->name }}</strong>. Select a different parent or "None" to make it a main category.
+                                    @else
+                                        Select a parent category to make this a subcategory, or leave empty to keep it as a main category.
+                                    @endif
+                                </small>
+                                @error('parent_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" 
+                                          id="description" 
+                                          name="description" 
+                                          rows="4" 
+                                          placeholder="Enter category description">{{ old('description', $category->description) }}</textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Category Image</label>
+                                @if($category->image)
                                     <div class="mb-3">
-                                        <img src="{{ asset('storage/' . $product->image) }}" 
+                                        <img src="{{ asset($category->image) }}" 
                                              alt="Current Image" 
                                              style="max-width: 200px; max-height: 200px; border-radius: 4px; border: 1px solid #ddd;">
                                         <p class="text-muted mt-2">Current Image</p>
@@ -167,45 +129,15 @@
                                     </span>
                                 @enderror
                                 <div id="image-preview" class="mt-3" style="display: none;">
-                                    <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 4px;">
+                                    <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 4px; border: 1px solid #ddd;">
                                     <p class="text-muted mt-2">New Image Preview</p>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="specifications">Specifications</label>
-                                <textarea class="form-control @error('specifications') is-invalid @enderror" 
-                                          id="specifications" 
-                                          name="specifications" 
-                                          rows="4" 
-                                          placeholder="Enter product specifications (one per line)">{{ old('specifications', $product->specifications ?? '') }}</textarea>
-                                <small class="form-text text-muted">Enter specifications, one per line</small>
-                                @error('specifications')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="sku">SKU (Stock Keeping Unit)</label>
-                                <input type="text" 
-                                       class="form-control @error('sku') is-invalid @enderror" 
-                                       id="sku" 
-                                       name="sku" 
-                                       value="{{ old('sku', $product->sku ?? '') }}" 
-                                       placeholder="e.g., FURN-001">
-                                @error('sku')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <div class="d-flex justify-content-end">
-                                <a href="{{ route('admin.products.index') }}" class="btn btn-light mr-2">Cancel</a>
+                                <a href="{{ route('admin.categories.index') }}" class="btn btn-light mr-2">Cancel</a>
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="mdi mdi-content-save"></i> Update Product
+                                    <i class="mdi mdi-content-save"></i> Update Category
                                 </button>
                             </div>
                         </form>
@@ -217,19 +149,25 @@
 
     <script>
         // Image preview
-        document.getElementById('image').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('preview-img').src = e.target.result;
-                    document.getElementById('image-preview').style.display = 'block';
+        const imageInput = document.getElementById('image');
+        if (imageInput) {
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const previewImg = document.getElementById('preview-img');
+                const imagePreview = document.getElementById('image-preview');
+                
+                if (file && previewImg && imagePreview) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                } else if (imagePreview) {
+                    imagePreview.style.display = 'none';
                 }
-                reader.readAsDataURL(file);
-            } else {
-                document.getElementById('image-preview').style.display = 'none';
-            }
-        });
+            });
+        }
     </script>
 @endsection
 

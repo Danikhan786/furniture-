@@ -44,7 +44,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="../../../backend/assets/images/faces/face28.png" alt="image">
+                  <img src="../../../backend/assets/images/faces-clipart/pic-4.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black">{{Auth::user()->name}}</p>
@@ -85,7 +85,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('admin.products.index') }}">
+              <a class="nav-link" href="{{ route('admin.categories.index') }}">
                 <span class="icon-bg"><i class="mdi mdi-package-variant menu-icon"></i></span>
                 <span class="menu-title">Categories</span>
               </a>
