@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Category;
+
 class frontendController extends Controller
 {
     public function index()
@@ -16,12 +19,34 @@ class frontendController extends Controller
 
     public function Shop()
     {
-        return view('frontend.shop');
+        $products = Product::with(['category', 'images'])
+            ->where('status', 'active')
+            ->latest()
+            ->paginate(12);
+        
+        $categories = Category::where('status', 'active')
+            ->orderBy('name')
+            ->get();
+        
+        return view('frontend.shop', compact('products', 'categories'));
     }
 
-    public function productDetail()
+    public function productDetail($slug)
     {
-        return view('frontend.productDetail');
+        $product = Product::with(['category', 'images'])
+            ->where('slug', $slug)
+            ->where('status', 'active')
+            ->firstOrFail();
+        
+        // Get related products from same category
+        $relatedProducts = Product::with('images')
+            ->where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->where('status', 'active')
+            ->limit(4)
+            ->get();
+        
+        return view('frontend.productDetail', compact('product', 'relatedProducts'));
     }
     public function cart()
     {

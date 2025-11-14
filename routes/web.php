@@ -19,7 +19,7 @@ Auth::routes();
  Route::get('/', [FrontendController::class, 'index'])->name('index');
  Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
  Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
- Route::get('/productDetail', [FrontendController::class, 'productDetail'])->name('productDetail');
+ Route::get('/product/{slug}', [FrontendController::class, 'productDetail'])->name('productDetail');
  Route::get('/cart', [FrontendController::class, 'cart'])->name('cart'); 
  Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout'); 
  Route::get('/thankyou', [FrontendController::class, 'thankyou'])->name('thankyou'); 
