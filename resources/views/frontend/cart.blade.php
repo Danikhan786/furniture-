@@ -5,13 +5,10 @@
 	<div class="hero">
 			<div class="container">
 					<div class="row justify-content-between">
-							<div class="col-lg-5">
-									<div class="intro-excerpt">
+							<div class="col-lg-12	">
+									<div class="text-center">
 											<h1>Cart</h1>
 									</div>
-							</div>
-							<div class="col-lg-7">
-
 							</div>
 					</div>
 			</div>
@@ -110,18 +107,6 @@
 													<button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
 											</div>
 									</div>
-									<div class="row">
-											<div class="col-md-12">
-													<label class="text-black h4" for="coupon">Coupon</label>
-													<p>Enter your coupon code if you have one.</p>
-											</div>
-											<div class="col-md-8 mb-3 mb-md-0">
-													<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-											</div>
-											<div class="col-md-4">
-													<button class="btn btn-black">Apply Coupon</button>
-											</div>
-									</div>
 							</div>
 							<div class="col-md-6 pl-5">
 									<div class="row justify-content-end">
@@ -150,7 +135,7 @@
 
 													<div class="row">
 															<div class="col-md-12">
-																	<button class="btn btn-black btn-lg py-3 btn-block"
+																	<button class="btn btn-black btn-sm py-3 btn-block"
 																			onclick="window.location='{{route('checkout')}}'">Proceed To Checkout</button>
 															</div>
 													</div>

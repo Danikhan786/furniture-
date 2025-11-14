@@ -7,7 +7,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-12 ">
                     <div class="text-center text-white">
-                        <h2>{{ $product->name }}</h2>
+                        <h1>{{ $product->name }}</h1>
                     </div>
                 </div>
 
@@ -109,20 +109,19 @@
                             </p>
                         @endif
 
-                        <!-- Add to Cart -->
+                        <!-- Add to Cart and WhatsApp -->
                         <div class="mb-4">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="quantity-input">
-                                    <label for="quantity" class="me-2">Quantity:</label>
-                                    <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                        max="{{ $product->stock > 0 ? $product->stock : 1 }}" class="form-control"
-                                        style="width: 100px; display: inline-block;">
-                                </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button type="button" class="btn btn-primary btn-md" onclick="addToCart({{ $product->id }})"
+                                    {{ $product->stock <= 0 ? 'disabled' : '' }}>
+                                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/923154764713?text={{ urlencode('Check out this product: ' . $product->name . ' - ' . route('productDetail', $product->slug)) }}" 
+                                   target="_blank" 
+                                   class="btn btn-success btn-md">
+                                   <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                                </a>
                             </div>
-                            <button type="button" class="btn btn-primary btn-lg" onclick="addToCart({{ $product->id }})"
-                                {{ $product->stock <= 0 ? 'disabled' : '' }}>
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </button>
                         </div>
 
                     </div>
@@ -193,63 +192,6 @@
                                         </div>
                                         <p class="mb-0">Excellent product! The quality is outstanding and it looks
                                             exactly as described. Very satisfied with my purchase.</p>
-                                    </div>
-
-                                    <!-- Review 2 -->
-                                    <div class="review-item mb-4 pb-4 border-bottom">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h6 class="mb-1">Sarah Smith</h6>
-                                                <div class="mb-2">
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star-half-alt text-warning"></i>
-                                                </div>
-                                            </div>
-                                            <small class="text-muted">1 week ago</small>
-                                        </div>
-                                        <p class="mb-0">Great product overall. The delivery was fast and the product
-                                            arrived in perfect condition. Highly recommend!</p>
-                                    </div>
-
-                                    <!-- Review 3 -->
-                                    <div class="review-item mb-4 pb-4 border-bottom">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h6 class="mb-1">Michael Johnson</h6>
-                                                <div class="mb-2">
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="far fa-star text-warning"></i>
-                                                </div>
-                                            </div>
-                                            <small class="text-muted">2 weeks ago</small>
-                                        </div>
-                                        <p class="mb-0">Good quality furniture. It's sturdy and well-made. The only minor
-                                            issue was the assembly instructions could be clearer.</p>
-                                    </div>
-
-                                    <!-- Review 4 -->
-                                    <div class="review-item mb-4">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h6 class="mb-1">Emily Brown</h6>
-                                                <div class="mb-2">
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                </div>
-                                            </div>
-                                            <small class="text-muted">3 weeks ago</small>
-                                        </div>
-                                        <p class="mb-0">Absolutely love it! The design is modern and it fits perfectly in
-                                            my living room. Worth every penny!</p>
                                     </div>
                                 </div>
 
