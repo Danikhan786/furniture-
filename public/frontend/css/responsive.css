@@ -2,13 +2,25 @@
   .hero .hero-img-wrap img {
     max-width: 410px;
     top: 62px;
-}
+  }
 
+  .hero .hero-img-wrap:after {
+    width: 155px;
+    right: 0px;
+  }
 
-.hero .hero-img-wrap:after {
-  width: 255px;
-  height: 217px;
-  right: 0px;
+  .footer-section .sofa-img {
+    top: -87px;
+  }
+
+  .footer-section .sofa-img img {
+    max-width: 200px;
+  }
+
+  .why-choose-section .img-wrap:before {
+    width: 155px;
+    height: 166px;
+
 }
 }
 
@@ -16,16 +28,16 @@
   .hero .hero-img-wrap img {
     max-width: 350px;
     top: 53px;
-}
+  }
 }
 
 @media only screen and (max-width:320px) {
   .hero .hero-img-wrap img {
     max-width: 300px;
-    top: 49px;
-}
+    top: 46px;
+  }
 
-.custom-navbar .navbar-brand {
-  font-size: 26px;
-}
+  .custom-navbar .navbar-brand {
+    font-size: 26px;
+  }
 }
