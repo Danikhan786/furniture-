@@ -66,4 +66,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         'update' => 'admin.products.update',
         'destroy' => 'admin.products.destroy',
     ]);
+    
+    Route::delete('admin/products/images/{id}', [ProductController::class, 'deleteImage'])->name('admin.products.images.delete');
 });

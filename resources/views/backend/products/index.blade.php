@@ -38,35 +38,76 @@
                                         <th>ID</th>
                                         <th>Image</th>
                                         <th>Name</th>
+                                        <th>SKU</th>
                                         <th>Category</th>
                                         <th>Price</th>
+                                        <th>Discount</th>
                                         <th>Stock</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @forelse($products ?? [] as $product) --}}
+                                    @forelse($products ?? [] as $product)
                                         <tr>
-                                            <td>{{ $product->id ?? 'N/A' }}</td>
+                                            <td>{{ $product->id }}</td>
                                             <td>
-                                                <img src="{{ asset('frontend/images/product-single-1.jpg') }}" 
-                                                     alt="Product" 
-                                                     class="img-sm rounded"
-                                                     style="width: 50px; height: 50px; object-fit: cover;">
+                                                @if($product->image)
+                                                    <img src="{{ asset($product->image) }}" 
+                                                         alt="{{ $product->name }}" 
+                                                         class="img-sm rounded"
+                                                         style="width: 50px; height: 50px; object-fit: cover;">
+                                                @else
+                                                    <div class="img-sm rounded bg-light d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                        <i class="mdi mdi-image"></i>
+                                                    </div>
+                                                @endif
                                             </td>
-                                            <td>{{ $product->name ?? 'Product Name' }}</td>
                                             <td>
-                                                <span class="badge badge-info">{{ $product->category ?? 'Uncategorized' }}</span>
+                                                <strong>{{ $product->name }}</strong>
+                                                @if($product->short_description)
+                                                    <br><small class="text-muted">{{ Str::limit($product->short_description, 30) }}</small>
+                                                @endif
                                             </td>
-                                            <td>${{ number_format($product->price ?? 0, 2) }}</td>
                                             <td>
-                                                <span class="badge {{ ($product->stock ?? 0) > 0 ? 'badge-success' : 'badge-danger' }}">
-                                                    {{ $product->stock ?? 0 }}
+                                                @if($product->sku)
+                                                    <code class="text-primary">{{ $product->sku }}</code>
+                                                @else
+                                                    <span class="text-muted">—</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($product->category)
+                                                    <span class="badge badge-info">{{ $product->category->name }}</span>
+                                                @else
+                                                    <span class="badge badge-secondary">Uncategorized</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($product->discount_price)
+                                                    <div>
+                                                        <span class="text-decoration-line-through text-muted">${{ number_format($product->price, 2) }}</span>
+                                                        <br>
+                                                        <strong class="text-danger">${{ number_format($product->discount_price, 2) }}</strong>
+                                                    </div>
+                                                @else
+                                                    <strong>${{ number_format($product->price, 2) }}</strong>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($product->discount_percent)
+                                                    <span class="badge badge-danger">{{ $product->discount_percent }}% OFF</span>
+                                                @else
+                                                    <span class="text-muted">—</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <span class="badge {{ $product->stock > 0 ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $product->stock }}
                                                 </span>
                                             </td>
                                             <td>
-                                                @if(isset($product->status) && $product->status == 'active')
+                                                @if($product->status == 'active')
                                                     <span class="badge badge-success">Active</span>
                                                 @else
                                                     <span class="badge badge-secondary">Inactive</span>
@@ -74,12 +115,12 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{ route('admin.products.edit', $product->id ?? 1) }}" 
+                                                    <a href="{{ route('admin.products.edit', $product->id) }}" 
                                                        class="btn btn-sm btn-info" 
                                                        title="Edit">
                                                         <i class="mdi mdi-pencil"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.products.destroy', $product->id ?? 1) }}" 
+                                                    <form action="{{ route('admin.products.destroy', $product->id) }}" 
                                                           method="POST" 
                                                           class="d-inline"
                                                           onsubmit="return confirm('Are you sure you want to delete this product?');">
@@ -92,9 +133,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    {{-- @empty --}}
-                                        {{-- <tr>
-                                            <td colspan="8" class="text-center py-4">
+                                    @empty
+                                        <tr>
+                                            <td colspan="10" class="text-center py-4">
                                                 <div class="text-muted">
                                                     <i class="mdi mdi-package-variant" style="font-size: 48px;"></i>
                                                     <p class="mt-2">No products found</p>
@@ -103,8 +144,8 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                        </tr> --}}
-                                    {{-- @endforelse --}}
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

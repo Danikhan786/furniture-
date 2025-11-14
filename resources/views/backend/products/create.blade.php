@@ -49,21 +49,19 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="category">Category <span class="text-danger">*</span></label>
-                                        <select class="form-control @error('category') is-invalid @enderror" 
-                                                id="category" 
-                                                name="category" 
+                                        <label for="category_id">Category <span class="text-danger">*</span></label>
+                                        <select class="form-control @error('category_id') is-invalid @enderror" 
+                                                id="category_id" 
+                                                name="category_id" 
                                                 required>
                                             <option value="">Select Category</option>
-                                            <option value="chairs" {{ old('category') == 'chairs' ? 'selected' : '' }}>Chairs</option>
-                                            <option value="tables" {{ old('category') == 'tables' ? 'selected' : '' }}>Tables</option>
-                                            <option value="sofas" {{ old('category') == 'sofas' ? 'selected' : '' }}>Sofas</option>
-                                            <option value="cabinets" {{ old('category') == 'cabinets' ? 'selected' : '' }}>Cabinets</option>
-                                            <option value="lighting" {{ old('category') == 'lighting' ? 'selected' : '' }}>Lighting</option>
-                                            <option value="decor" {{ old('category') == 'decor' ? 'selected' : '' }}>Decor</option>
-                                            <option value="accessories" {{ old('category') == 'accessories' ? 'selected' : '' }}>Accessories</option>
+                                            @foreach($categories ?? [] as $category)
+                                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
-                                        @error('category')
+                                        @error('category_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -73,14 +71,29 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Description <span class="text-danger">*</span></label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" 
-                                          id="description" 
-                                          name="description" 
-                                          rows="5" 
-                                          placeholder="Enter product description"
-                                          required>{{ old('description') }}</textarea>
-                                @error('description')
+                                <label for="short_description">Short Description</label>
+                                <textarea class="form-control @error('short_description') is-invalid @enderror" 
+                                          id="short_description" 
+                                          name="short_description" 
+                                          rows="3" 
+                                          placeholder="Enter short description (max 500 characters)">{{ old('short_description') }}</textarea>
+                                <small class="form-text text-muted">Brief description that will appear in product listings (max 500 characters)</small>
+                                @error('short_description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="long_description">Long Description</label>
+                                <textarea class="form-control @error('long_description') is-invalid @enderror" 
+                                          id="long_description" 
+                                          name="long_description" 
+                                          rows="6" 
+                                          placeholder="Enter detailed product description">{{ old('long_description') }}</textarea>
+                                <small class="form-text text-muted">Detailed description of the product</small>
+                                @error('long_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -109,6 +122,25 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label for="discount_price">Discount Price ($)</label>
+                                        <input type="number" 
+                                               class="form-control @error('discount_price') is-invalid @enderror" 
+                                               id="discount_price" 
+                                               name="discount_price" 
+                                               value="{{ old('discount_price') }}" 
+                                               step="0.01" 
+                                               min="0"
+                                               placeholder="0.00">
+                                        <small class="form-text text-muted">Discount percent will be calculated automatically</small>
+                                        @error('discount_price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <label for="stock">Stock Quantity <span class="text-danger">*</span></label>
                                         <input type="number" 
                                                class="form-control @error('stock') is-invalid @enderror" 
@@ -125,6 +157,9 @@
                                         @enderror
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="status">Status <span class="text-danger">*</span></label>
@@ -132,7 +167,7 @@
                                                 id="status" 
                                                 name="status" 
                                                 required>
-                                            <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                                            <option value="active" {{ old('status', 'active') == 'active' ? 'selected' : '' }}>Active</option>
                                             <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                         @error('status')
@@ -142,54 +177,76 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="sku">SKU (Stock Keeping Unit)</label>
+                                        <input type="text" 
+                                               class="form-control @error('sku') is-invalid @enderror" 
+                                               id="sku" 
+                                               name="sku" 
+                                               value="{{ old('sku') }}" 
+                                               placeholder="Leave empty to auto-generate">
+                                        <small class="form-text text-muted">SKU will be generated automatically if left empty</small>
+                                        @error('sku')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="slug">Slug</label>
+                                        <input type="text" 
+                                               class="form-control @error('slug') is-invalid @enderror" 
+                                               id="slug" 
+                                               name="slug" 
+                                               value="{{ old('slug') }}" 
+                                               placeholder="Leave empty to auto-generate">
+                                        <small class="form-text text-muted">Slug will be generated automatically from product name if left empty</small>
+                                        @error('slug')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Product Image</label>
+                                <label for="image">Main Product Image</label>
                                 <input type="file" 
                                        class="form-control-file @error('image') is-invalid @enderror" 
                                        id="image" 
                                        name="image"
                                        accept="image/*">
-                                <small class="form-text text-muted">Upload product image (JPG, PNG, GIF - Max: 2MB)</small>
+                                <small class="form-text text-muted">Upload main product image (JPG, PNG, GIF - Max: 2MB)</small>
                                 @error('image')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                                 <div id="image-preview" class="mt-3" style="display: none;">
-                                    <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 4px;">
+                                    <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 4px; border: 1px solid #ddd;">
+                                    <p class="text-muted mt-2">Image Preview</p>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="specifications">Specifications</label>
-                                <textarea class="form-control @error('specifications') is-invalid @enderror" 
-                                          id="specifications" 
-                                          name="specifications" 
-                                          rows="4" 
-                                          placeholder="Enter product specifications (one per line)">{{ old('specifications') }}</textarea>
-                                <small class="form-text text-muted">Enter specifications, one per line</small>
-                                @error('specifications')
-                                    <span class="invalid-feedback" role="alert">
+                                <label for="images">Additional Product Images</label>
+                                <input type="file" 
+                                       class="form-control-file @error('images.*') is-invalid @enderror" 
+                                       id="images" 
+                                       name="images[]"
+                                       accept="image/*"
+                                       multiple>
+                                <small class="form-text text-muted">Upload multiple images (JPG, PNG, GIF - Max: 2MB each)</small>
+                                @error('images.*')
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="sku">SKU (Stock Keeping Unit)</label>
-                                <input type="text" 
-                                       class="form-control @error('sku') is-invalid @enderror" 
-                                       id="sku" 
-                                       name="sku" 
-                                       value="{{ old('sku') }}" 
-                                       placeholder="e.g., FURN-001">
-                                @error('sku')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div id="images-preview" class="mt-3 row"></div>
                             </div>
 
                             <div class="d-flex justify-content-end">
@@ -206,20 +263,53 @@
     </div>
 
     <script>
-        // Image preview
-        document.getElementById('image').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('preview-img').src = e.target.result;
-                    document.getElementById('image-preview').style.display = 'block';
+        // Main image preview
+        const imageInput = document.getElementById('image');
+        if (imageInput) {
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const previewImg = document.getElementById('preview-img');
+                const imagePreview = document.getElementById('image-preview');
+                
+                if (file && previewImg && imagePreview) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                } else if (imagePreview) {
+                    imagePreview.style.display = 'none';
                 }
-                reader.readAsDataURL(file);
-            } else {
-                document.getElementById('image-preview').style.display = 'none';
-            }
-        });
+            });
+        }
+
+        // Multiple images preview
+        const imagesInput = document.getElementById('images');
+        if (imagesInput) {
+            imagesInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                const previewContainer = document.getElementById('images-preview');
+                previewContainer.innerHTML = '';
+
+                if (files && files.length > 0) {
+                    Array.from(files).forEach((file, index) => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const col = document.createElement('div');
+                            col.className = 'col-md-3 mb-3';
+                            col.innerHTML = `
+                                <div class="position-relative">
+                                    <img src="${e.target.result}" alt="Preview ${index + 1}" 
+                                         style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                                </div>
+                            `;
+                            previewContainer.appendChild(col);
+                        }
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+        }
     </script>
 @endsection
-
