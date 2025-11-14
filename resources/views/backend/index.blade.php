@@ -21,7 +21,7 @@
                                     <div>
                                         <p class="text-muted mb-2">Total Revenue</p>
                                         <h3 class="mb-0 text-dark font-weight-bold">$ 0</h3>
-                                        <small class="text-success"><i class="mdi mdi-arrow-up"></i> 0% from last month</small>
+                                        {{-- <small class="text-success"><i class="mdi mdi-arrow-up"></i> 0% from last month</small> --}}
                                     </div>
                                     <div class="icon-md bg-primary text-white rounded-circle px-2 py-1">
                                         <i class="mdi mdi-currency-usd"></i>
@@ -37,7 +37,7 @@
                                     <div>
                                         <p class="text-muted mb-2">Total Orders</p>
                                         <h3 class="mb-0 text-dark font-weight-bold">0</h3>
-                                        <small class="text-success"><i class="mdi mdi-arrow-up"></i> 0% from last month</small>
+                                        {{-- <small class="text-success"><i class="mdi mdi-arrow-up"></i> 0% from last month</small> --}}
                                     </div>
                                     <div class="icon-md bg-success text-white rounded-circle px-2 py-1">
                                         <i class="mdi mdi-cart"></i>
@@ -52,8 +52,14 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <p class="text-muted mb-2">Total Products</p>
-                                        <h3 class="mb-0 text-dark font-weight-bold">0</h3>
-                                        <small class="text-info"><i class="mdi mdi-arrow-up"></i> 0% from last month</small>
+                                        <h3 class="mb-0 text-dark font-weight-bold">{{ number_format($totalProducts ?? 0) }}</h3>
+                                        {{-- <small class="{{ ($productChange ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
+                                            <i class="mdi mdi-arrow-{{ ($productChange ?? 0) >= 0 ? 'up' : 'down' }}"></i> 
+                                            {{ abs($productChange ?? 0) }}% from last month
+                                        </small> --}}
+                                        <div class="mt-1">
+                                            <small class="text-muted">{{ $activeProducts ?? 0 }} active</small>
+                                        </div>
                                     </div>
                                     <div class="icon-md bg-info text-white rounded-circle px-2 py-1">
                                         <i class="mdi mdi-package-variant"></i>
@@ -67,12 +73,18 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <p class="text-muted mb-2">Total Customers</p>
-                                        <h3 class="mb-0 text-dark font-weight-bold">0</h3>
-                                        <small class="text-warning"><i class="mdi mdi-arrow-up"></i> 0% from last month</small>
+                                        <p class="text-muted mb-2">Total Categories</p>
+                                        <h3 class="mb-0 text-dark font-weight-bold">{{ number_format($totalCategories ?? 0) }}</h3>
+                                        {{-- <small class="{{ ($categoryChange ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
+                                            <i class="mdi mdi-arrow-{{ ($categoryChange ?? 0) >= 0 ? 'up' : 'down' }}"></i> 
+                                            {{ abs($categoryChange ?? 0) }}% from last month
+                                        </small> --}}
+                                        <div class="mt-1">
+                                            <small class="text-muted">{{ $activeCategories ?? 0 }} active</small>
+                                        </div>
                                     </div>
                                     <div class="icon-md bg-warning text-white rounded-circle px-2 py-1">
-                                        <i class="mdi mdi-account-group"></i>
+                                        <i class="mdi mdi-folder-multiple"></i>
                                     </div>
                                 </div>
                             </div>
