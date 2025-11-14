@@ -114,7 +114,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <div class="btn-group" role="group">
+                                                <div class="d-grid gap-3">
                                                     <a href="{{ route('admin.products.edit', $product->id) }}" 
                                                        class="btn btn-sm btn-info" 
                                                        title="Edit">

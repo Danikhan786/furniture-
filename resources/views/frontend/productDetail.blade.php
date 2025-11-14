@@ -26,7 +26,7 @@
                         <!-- Main Image -->
                         <div class="main-image mb-3">
                             <img id="main-product-image"
-                                src="{{ $product->image ? asset($product->image) : 'frontend/images/product-1.png' }}"
+                                src="{{ $product->image ? asset($product->image) : '../../frontend/images/product-1.png' }}"
                                 alt="{{ $product->name }}" class="img-fluid rounded"
                                 style="width: 100%; height: 500px; object-fit: cover;">
                         </div>
@@ -253,7 +253,7 @@
                                     <img src="{{ asset($relatedProduct->image) }}" alt="{{ $relatedProduct->name }}"
                                         class="img-fluid product-thumbnail">
                                 @else
-                                    <img src="frontend/images/product-1.png" alt="{{ $relatedProduct->name }}"
+                                    <img src="../../frontend/images/product-1.png" alt="{{ $relatedProduct->name }}"
                                         class="img-fluid product-thumbnail">
                                 @endif
                                 <h3 class="product-title">{{ $relatedProduct->name }}</h3>
@@ -266,7 +266,7 @@
                                 </strong>
 
                                 <span class="icon-cross">
-                                    <img src="frontend/images/cross.svg" class="img-fluid">
+                                    <img src="../../frontend/images/cross.svg" class="img-fluid">
                                 </span>
                             </a>
                         </div>
@@ -288,36 +288,6 @@
                 const img = element.querySelector('img') || element;
                 img.style.border = '2px solid #007bff';
             }
-        }
-
-        function addToCart(productId) {
-            const quantity = document.getElementById('quantity').value;
-
-            // Simple cart functionality - you can enhance this later
-            alert('Product added to cart! Quantity: ' + quantity);
-
-            // You can implement actual cart functionality here
-            // For example, using AJAX to add to session cart
-            /*
-            fetch('/cart/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    product_id: productId,
-                    quantity: quantity
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    alert('Product added to cart!');
-                    // Update cart count if needed
-                }
-            });
-            */
         }
     </script>
 @endsection

@@ -9,7 +9,13 @@ class frontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $products = Product::with(['category', 'images'])
+            ->where('status', 'active')
+            ->latest()
+            ->limit(8)
+            ->get();
+        
+        return view('frontend.index', compact('products'));
     }
 
     public function about()
