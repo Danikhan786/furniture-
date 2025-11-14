@@ -1,291 +1,311 @@
 @extends('layouts.frontend')
 
 @section('content')
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(frontend/images/img_bg_2.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Checkout</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+    <!-- Start Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <h1>Checkout</h1>
+                    </div>
+                </div>
+                <div class="col-lg-7">
 
-	<div id="fh5co-product">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-12">
-					<div class="row">
-						<!-- Billing & Shipping Form -->
-						<div class="col-md-8">
-							<div class="checkout-form-wrapper">
-								<!-- Billing Information -->
-								<div class="checkout-section">
-									<h3 class="section-title">
-										<i class="icon-user"></i> Billing Information
-									</h3>
-									<form id="checkout-form">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="first_name">First Name <span class="required">*</span></label>
-													<input type="text" class="form-control" id="first_name" name="first_name" required>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="last_name">Last Name <span class="required">*</span></label>
-													<input type="text" class="form-control" id="last_name" name="last_name" required>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="email">Email Address <span class="required">*</span></label>
-											<input type="email" class="form-control" id="email" name="email" required>
-										</div>
-										<div class="form-group">
-											<label for="phone">Phone Number <span class="required">*</span></label>
-											<input type="tel" class="form-control" id="phone" name="phone" required>
-										</div>
-										<div class="form-group">
-											<label for="address">Street Address <span class="required">*</span></label>
-											<input type="text" class="form-control" id="address" name="address" required>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="city">City <span class="required">*</span></label>
-													<input type="text" class="form-control" id="city" name="city" required>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="state">State/Province <span class="required">*</span></label>
-													<input type="text" class="form-control" id="state" name="state" required>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="zip">ZIP/Postal Code <span class="required">*</span></label>
-													<input type="text" class="form-control" id="zip" name="zip" required>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="country">Country <span class="required">*</span></label>
-													<select class="form-control" id="country" name="country" required>
-														<option value="">Select Country</option>
-														<option value="US">United States</option>
-														<option value="CA">Canada</option>
-														<option value="UK">United Kingdom</option>
-														<option value="AU">Australia</option>
-														<option value="DE">Germany</option>
-														<option value="FR">France</option>
-														<option value="IT">Italy</option>
-														<option value="ES">Spain</option>
-													</select>
-												</div>
-											</div>
-										</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
 
-										<!-- Payment Method -->
-										<div class="payment-section">
-											<h3 class="section-title">
-												<i class="icon-credit-card"></i> Payment Method
-											</h3>
-											<div class="payment-methods">
-												<div class="radio">
-													<label>
-														<input type="radio" name="payment_method" value="cash_on_delivery" checked>
-														<strong>Cash on Delivery</strong>
-													</label>
-												</div>
-												<div class="payment-info">
-													<p class="text-muted">
-														<i class="icon-info"></i> You will pay in cash when your order is delivered.
-													</p>
-												</div>
-											</div>
-										</div>
+    <div class="untree_co-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="border p-4 rounded" role="alert">
+                        Returning customer? <a href="#">Click here</a> to login
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <h2 class="h3 mb-3 text-black">Billing Details</h2>
+                    <div class="p-3 p-lg-5 border bg-white">
+                        <div class="form-group">
+                            <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+                            <select id="c_country" class="form-control">
+                                <option value="1">Select a country</option>
+                                <option value="2">bangladesh</option>
+                                <option value="3">Algeria</option>
+                                <option value="4">Afghanistan</option>
+                                <option value="5">Ghana</option>
+                                <option value="6">Albania</option>
+                                <option value="7">Bahrain</option>
+                                <option value="8">Colombia</option>
+                                <option value="9">Dominican Republic</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="c_fname" class="text-black">First Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_fname" name="c_fname">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_lname" class="text-black">Last Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_lname" name="c_lname">
+                            </div>
+                        </div>
 
-										<!-- Order Notes -->
-										<div class="form-group">
-											<label for="order_notes">Order Notes (Optional)</label>
-											<textarea class="form-control" id="order_notes" name="order_notes" rows="3" placeholder="Special instructions for your order..."></textarea>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_companyname" class="text-black">Company Name </label>
+                                <input type="text" class="form-control" id="c_companyname" name="c_companyname">
+                            </div>
+                        </div>
 
-						<!-- Order Summary -->
-						<div class="col-md-4">
-							<div class="order-summary">
-								<h3 class="summary-title">
-									<i class="icon-shopping-cart"></i> Order Summary
-								</h3>
-								
-								<div class="order-items">
-									@if(isset($cartItems) && count($cartItems) > 0)
-										@foreach($cartItems as $item)
-										<div class="order-item">
-											<div class="item-image">
-												<img src="frontend/images/product-{{ $item['id'] ?? 1 }}.jpg" alt="{{ $item['name'] ?? 'Product' }}">
-											</div>
-											<div class="item-details">
-												<h5>{{ $item['name'] ?? 'Hauteville Rocking Chair' }}</h5>
-												<p class="item-meta">Qty: {{ $item['quantity'] ?? 1 }} × ${{ number_format($item['price'] ?? 350, 2) }}</p>
-											</div>
-											<div class="item-price">
-												${{ number_format(($item['price'] ?? 350) * ($item['quantity'] ?? 1), 2) }}
-											</div>
-										</div>
-										@endforeach
-									@else
-										<!-- Sample items for display -->
-										<div class="order-item">
-											<div class="item-image">
-												<img src="frontend/images/product-1.jpg" alt="Product">
-											</div>
-											<div class="item-details">
-												<h5>Hauteville Rocking Chair</h5>
-												<p class="item-meta">Qty: 2 × $350.00</p>
-											</div>
-											<div class="item-price">
-												$700.00
-											</div>
-										</div>
-										<div class="order-item">
-											<div class="item-image">
-												<img src="frontend/images/product-2.jpg" alt="Product">
-											</div>
-											<div class="item-details">
-												<h5>Pavilion Speaker</h5>
-												<p class="item-meta">Qty: 1 × $600.00</p>
-											</div>
-											<div class="item-price">
-												$600.00
-											</div>
-										</div>
-									@endif
-								</div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_address" name="c_address"
+                                    placeholder="Street address">
+                            </div>
+                        </div>
 
-								<!-- Coupon Code -->
-								<div class="coupon-section">
-									<h4 class="coupon-title">
-										<i class="icon-tag"></i> Add Coupon Code
-									</h4>
-									<div class="coupon-form">
-										<div class="input-group">
-											<input type="text" class="form-control" id="coupon_code" name="coupon_code" placeholder="Enter coupon code">
-											<span class="input-group-btn">
-												<button class="btn btn-primary" type="button" id="apply-coupon-btn" onclick="applyCoupon()">
-													Apply
-												</button>
-											</span>
-										</div>
-										<div id="coupon-message" class="coupon-message"></div>
-									</div>
-								</div>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
+                        </div>
 
-								<div class="order-totals">
-									<div class="total-row">
-										<span>Subtotal:</span>
-										<span>${{ number_format($subtotal ?? 1300, 2) }}</span>
-									</div>
-									<div id="discount-row" class="total-row discount-row" style="display: none;">
-										<span>Discount:</span>
-										<span class="discount-amount">-$0.00</span>
-									</div>
-									<div class="total-row">
-										<span>Shipping:</span>
-										<span>${{ number_format($shipping ?? 50, 2) }}</span>
-									</div>
-									<div class="total-row">
-										<span>Tax:</span>
-										<span>${{ number_format($tax ?? 130, 2) }}</span>
-									</div>
-									<div class="total-row final-total">
-										<span><strong>Total:</strong></span>
-										<span><strong class="price" id="final-total">${{ number_format($total ?? 1480, 2) }}</strong></span>
-									</div>
-								</div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="c_state_country" class="text-black">State / Country <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_postal_zip" class="text-black">Posta / Zip <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                            </div>
+                        </div>
 
-								<div class="checkout-actions">
-									<a href="{{ route('cart') }}" class="btn btn-default btn-block">
-										<i class="icon-arrow-left"></i> Back to Cart
-									</a>
-									<button type="submit" form="checkout-form" class="btn btn-primary btn-lg btn-block">
-										<i class="icon-check"></i> Place Order
-									</button>
-								</div>
+                        <div class="form-group row mb-5">
+                            <div class="col-md-6">
+                                <label for="c_email_address" class="text-black">Email Address <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_phone" name="c_phone"
+                                    placeholder="Phone Number">
+                            </div>
+                        </div>
 
-								<div class="security-info">
-									<p class="text-center">
-										<i class="icon-lock"></i> Secure checkout. Your information is safe.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <div class="form-group">
+                            <label for="c_create_account" class="text-black" data-bs-toggle="collapse"
+                                href="#create_an_account" role="button" aria-expanded="false"
+                                aria-controls="create_an_account"><input type="checkbox" value="1"
+                                    id="c_create_account"> Create an account?</label>
+                            <div class="collapse" id="create_an_account">
+                                <div class="py-2 mb-4">
+                                    <p class="mb-3">Create an account by entering the information below. If you are a
+                                        returning customer please login at the top of the page.</p>
+                                    <div class="form-group">
+                                        <label for="c_account_password" class="text-black">Account Password</label>
+                                        <input type="email" class="form-control" id="c_account_password"
+                                            name="c_account_password" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-	<script>
-		let appliedCoupon = null;
-		let discountAmount = 0;
-		const originalTotal = {{ $total ?? 1480 }};
-		const subtotal = {{ $subtotal ?? 1300 }};
-		const shipping = {{ $shipping ?? 50 }};
-		const tax = {{ $tax ?? 130 }};
+                        <div class="form-group">
+                            <label for="c_ship_different_address" class="text-black" data-bs-toggle="collapse"
+                                href="#ship_different_address" role="button" aria-expanded="false"
+                                aria-controls="ship_different_address"><input type="checkbox" value="1"
+                                    id="c_ship_different_address"> Ship To A Different Address?</label>
+                            <div class="collapse" id="ship_different_address">
+                                <div class="py-2">
+
+                                    <div class="form-group">
+                                        <label for="c_diff_country" class="text-black">Country <span
+                                                class="text-danger">*</span></label>
+                                        <select id="c_diff_country" class="form-control">
+                                            <option value="1">Select a country</option>
+                                            <option value="2">bangladesh</option>
+                                            <option value="3">Algeria</option>
+                                            <option value="4">Afghanistan</option>
+                                            <option value="5">Ghana</option>
+                                            <option value="6">Albania</option>
+                                            <option value="7">Bahrain</option>
+                                            <option value="8">Colombia</option>
+                                            <option value="9">Dominican Republic</option>
+                                        </select>
+                                    </div>
 
 
-		function updateTotals() {
-			const discountRow = document.getElementById('discount-row');
-			const discountAmountEl = document.querySelector('.discount-amount');
-			const finalTotalEl = document.getElementById('final-total');
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_fname" class="text-black">First Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_fname"
+                                                name="c_diff_fname">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_lname" class="text-black">Last Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_lname"
+                                                name="c_diff_lname">
+                                        </div>
+                                    </div>
 
-			if (discountAmount > 0) {
-				const newTotal = originalTotal - discountAmount;
-				discountRow.style.display = 'flex';
-				discountAmountEl.textContent = '-$' + discountAmount.toFixed(2);
-				finalTotalEl.textContent = '$' + newTotal.toFixed(2);
-			} else {
-				discountRow.style.display = 'none';
-				finalTotalEl.textContent = '$' + originalTotal.toFixed(2);
-			}
-		}
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="c_diff_companyname" class="text-black">Company Name </label>
+                                            <input type="text" class="form-control" id="c_diff_companyname"
+                                                name="c_diff_companyname">
+                                        </div>
+                                    </div>
 
-		// Allow Enter key to apply coupon
-		document.getElementById('coupon_code').addEventListener('keypress', function(e) {
-			if (e.key === 'Enter') {
-				e.preventDefault();
-				applyCoupon();
-			}
-		});
+                                    <div class="form-group row  mb-3">
+                                        <div class="col-md-12">
+                                            <label for="c_diff_address" class="text-black">Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_address"
+                                                name="c_diff_address" placeholder="Street address">
+                                        </div>
+                                    </div>
 
-		// Form submission
-		document.getElementById('checkout-form').addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			// Here you would typically validate and submit the form via AJAX
-			// For now, we'll show a confirmation
-			if (confirm('Are you sure you want to place this order? Payment will be collected on delivery.')) {
-				// Submit form
-				alert('Order placed successfully! (This is a demo - implement actual order processing)');
-				// Uncomment below to actually submit:
-				// this.submit();
-			}
-		});
-	</script>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apartment, suite, unit etc. (optional)">
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_state_country" class="text-black">State / Country <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_state_country"
+                                                name="c_diff_state_country">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_postal_zip" class="text-black">Posta / Zip <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_postal_zip"
+                                                name="c_diff_postal_zip">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-5">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_email_address" class="text-black">Email Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_email_address"
+                                                name="c_diff_email_address">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_phone" class="text-black">Phone <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_phone"
+                                                name="c_diff_phone" placeholder="Phone Number">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c_order_notes" class="text-black">Order Notes</label>
+                            <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control"
+                                placeholder="Write your notes here..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Coupon Code</h2>
+                            <div class="p-3 p-lg-5 border bg-white">
+
+                                <label for="c_code" class="text-black mb-3">Enter your coupon code if you have
+                                    one</label>
+                                <div class="input-group w-75 couponcode-wrap">
+                                    <input type="text" class="form-control me-2" id="c_code"
+                                        placeholder="Coupon Code" aria-label="Coupon Code"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-black btn-sm" type="button"
+                                            id="button-addon2">Apply</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Your Order</h2>
+                            <div class="p-3 p-lg-5 border bg-white">
+                                <table class="table site-block-order-table mb-5">
+                                    <thead>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
+                                            <td>$250.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Polo Shirt <strong class="mx-2">x</strong> 1</td>
+                                            <td>$100.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
+                                            <td class="text-black">$350.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <div class="border p-3 mb-3">
+                                    <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
+                                            href="#collapsecheque" role="button" aria-expanded="false"
+                                            aria-controls="collapsecheque">Chash on Delivery</a></h3>
+
+                                    <div class="collapse" id="collapsecheque">
+                                        <div class="py-2">
+                                            <p class="mb-0">We will deliver your order to your doorstep.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <button class="btn btn-black btn-lg py-3 btn-block"
+                                        onclick="window.location='{{route('thankyou')}}'">Place Order</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+    </div>
 @endsection

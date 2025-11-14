@@ -1,106 +1,258 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner"
-        style="background-image:url(frontend/images/img_bg_2.jpg);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <div class="display-t">
-                        <div class="display-tc animate-box" data-animate-effect="fadeIn">
+		<!-- Start Hero Section -->
+        <div class="hero">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="intro-excerpt">
                             <h1>About Us</h1>
+                            <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                            <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="hero-img-wrap">
+                            <img src="frontend/images/couch.png" class="img-fluid">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    <!-- End Hero Section -->
 
-    <div id="fh5co-about">
+    
+
+    <!-- Start Why Choose Us Section -->
+    <div class="why-choose-section">
         <div class="container">
-            <div class="about-content">
-                <div class="row animate-box">
-                    <div class="col-md-6">
-                        <div class="desc">
-                            <h3>Company History</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quo est quis mollitia ratione
-                                magni assumenda repellat atque modi temporibus tempore ex. Dolore facilis ex sunt ea
-                                praesentium expedita numquam?</p>
-                            <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat
-                                velit eaque aspernatur expedita. Possimus itaque adipisci rem dolorem nesciunt perferendis
-                                quae amet deserunt eum labore quidem minima.</p>
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+
+                    <div class="row my-5">
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="frontend/images/truck.svg" alt="Image" class="imf-fluid">
+                                </div>
+                                <h3>Fast &amp; Free Shipping</h3>
+                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+                            </div>
                         </div>
-                        <div class="desc">
-                            <h3>Mission &amp; Vission</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quo est quis mollitia ratione
-                                magni assumenda repellat atque modi temporibus tempore ex. Dolore facilis ex sunt ea
-                                praesentium expedita numquam?</p>
-                            <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat
-                                velit eaque aspernatur expedita. Possimus itaque adipisci rem dolorem nesciunt perferendis
-                                quae amet deserunt eum labore quidem minima.</p>
+
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="frontend/images/bag.svg" alt="Image" class="imf-fluid">
+                                </div>
+                                <h3>Easy to Shop</h3>
+                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img class="img-responsive" src="frontend/images/img_bg_1.jpg" alt="about">
+
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="frontend/images/support.svg" alt="Image" class="imf-fluid">
+                                </div>
+                                <h3>24/7 Support</h3>
+                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="frontend/images/return.svg" alt="Image" class="imf-fluid">
+                                </div>
+                                <h3>Hassle Free Returns</h3>
+                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+                <div class="col-lg-5">
+                    <div class="img-wrap">
+                        <img src="frontend/images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+
             </div>
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <span>Productive Staff</span>
-                    <h2>Meet Our Team</h2>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit
-                        ab aliquam dolor eius.</p>
+        </div>
+    </div>
+    <!-- End Why Choose Us Section -->
+
+    <!-- Start Team Section -->
+    <div class="untree_co-section">
+        <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-lg-5 mx-auto text-center">
+                    <h2 class="section-title">Our Team</h2>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co-staff">
-                        <img src="frontend/images/person1.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                        <h3>Jean Smith</h3>
-                        <strong class="role">Chief Executive Officer</strong>
-                        <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit
-                            eaque aspernatur expedita. Possimus itaque adipisci.</p>
-                        <ul class="fh5co-social-icons">
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                            <li><a href="#"><i class="icon-github"></i></a></li>
-                        </ul>
-                    </div>
+
+                <!-- Start Column 1 -->
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                    <img src="frontend/images/person_1.jpg" class="img-fluid mb-5">
+                    <h3 clas><a href="#"><span class="">Lawson</span> Arnold</a></h3>
+        <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+        <p>Separated they live in.
+        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+        <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+                </div> 
+                <!-- End Column 1 -->
+
+                <!-- Start Column 2 -->
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                    <img src="frontend/images/person_2.jpg" class="img-fluid mb-5">
+
+                    <h3 clas><a href="#"><span class="">Jeremy</span> Walker</a></h3>
+        <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+        <p>Separated they live in.
+        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+        <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+
+                </div> 
+                <!-- End Column 2 -->
+
+                <!-- Start Column 3 -->
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                    <img src="frontend/images/person_3.jpg" class="img-fluid mb-5">
+                    <h3 clas><a href="#"><span class="">Patrik</span> White</a></h3>
+        <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+        <p>Separated they live in.
+        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+        <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+                </div> 
+                <!-- End Column 3 -->
+
+                <!-- Start Column 4 -->
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                    <img src="frontend/images/person_4.jpg" class="img-fluid mb-5">
+
+                    <h3 clas><a href="#"><span class="">Kathryn</span> Ryan</a></h3>
+        <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+        <p>Separated they live in.
+        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+        <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+
+      
+                </div> 
+                <!-- End Column 4 -->
+
+                
+
+            </div>
+        </div>
+    </div>
+    <!-- End Team Section -->
+
+    
+
+    <!-- Start Testimonial Slider -->
+    <div class="testimonial-section before-footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mx-auto text-center">
+                    <h2 class="section-title">Testimonials</h2>
                 </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co-staff">
-                        <img src="frontend/images/person2.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                        <h3>Hush Raven</h3>
-                        <strong class="role">Co-Owner</strong>
-                        <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit
-                            eaque aspernatur expedita. Possimus itaque adipisci.</p>
-                        <ul class="fh5co-social-icons">
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                            <li><a href="#"><i class="icon-github"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co-staff">
-                        <img src="frontend/images/person3.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                        <h3>Alex King</h3>
-                        <strong class="role">Co-Owner</strong>
-                        <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit
-                            eaque aspernatur expedita. Possimus itaque adipisci.</p>
-                        <ul class="fh5co-social-icons">
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                            <li><a href="#"><i class="icon-github"></i></a></li>
-                        </ul>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="testimonial-slider-wrap text-center">
+
+                        <div id="testimonial-nav">
+                            <span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+                            <span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+                        </div>
+
+                        <div class="testimonial-slider">
+                            
+                            <div class="item">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 mx-auto">
+
+                                        <div class="testimonial-block text-center">
+                                            <blockquote class="mb-5">
+                                                <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            </blockquote>
+
+                                            <div class="author-info">
+                                                <div class="author-pic">
+                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                </div>
+                                                <h3 class="font-weight-bold">Maria Jones</h3>
+                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- END item -->
+
+                            <div class="item">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 mx-auto">
+
+                                        <div class="testimonial-block text-center">
+                                            <blockquote class="mb-5">
+                                                <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            </blockquote>
+
+                                            <div class="author-info">
+                                                <div class="author-pic">
+                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                </div>
+                                                <h3 class="font-weight-bold">Maria Jones</h3>
+                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- END item -->
+
+                            <div class="item">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 mx-auto">
+
+                                        <div class="testimonial-block text-center">
+                                            <blockquote class="mb-5">
+                                                <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            </blockquote>
+
+                                            <div class="author-info">
+                                                <div class="author-pic">
+                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                </div>
+                                                <h3 class="font-weight-bold">Maria Jones</h3>
+                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- END item -->
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- End Testimonial Slider -->
+
 @endsection

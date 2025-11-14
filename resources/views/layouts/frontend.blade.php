@@ -1,166 +1,137 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="gettemplates.co" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
 
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{ asset('frontend/css/animate.css')}}">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{{ asset('frontend/css/icomoon.css')}}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
-
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css')}}">
-
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/owl.theme.default.min.css')}}">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-
-	<!-- Modernizr JS -->
-	<script src="{{asset('frontend/js/modernizr-2.6.2.min.js')}}"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="{{asset('frontend/js/respond.min.js')}}"></script>
-	<![endif]-->
-
+		<!-- Bootstrap CSS -->
+		<link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="{{asset('frontend/css/tiny-slider.css')}}" rel="stylesheet">
+		<link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
+		<title>Furni Free </title>
 	</head>
+
 	<body>
 
-	<div class="fh5co-loader"></div>
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="{{ route('index') }}">oasismeubles</a></div>
-				</div>
-				<div class="col-md-6 col-xs-6 text-center menu-1">
-					<ul>
-						<li>
-							<a href="{{ route('index') }}">Home</a>
+			<div class="container">
+				<a class="navbar-brand" href="{{route('index')}}">Oasis Mubales<span>.</span></a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="{{route('index')}}">Home</a>
 						</li>
-						<li><a href="{{ route('about') }}">About</a></li>
-						<li>
-							<a href="{{ route('products') }}">Products</a>
-						</li>
-						<li><a href="{{ route('contact') }}">Contact</a></li>
+						<li><a class="nav-link" href="{{route('about')}}">About us</a></li>
+						<li><a class="nav-link" href="{{route('shop')}}">Shop</a></li>
+						<li><a class="nav-link" href="{{route('contact')}}">Contact us</a></li>
 					</ul>
-				</div>
-				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
-					<ul>
-						{{-- <li class="search">
-							<div class="input-group">
-						      <input type="text" placeholder="Search..">
-						      <span class="input-group-btn">
-						        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
-						      </span>
-						    </div>
-						</li> --}}
-						<li class="shopping-cart"><a href="{{route('login')}}" class="cart"><i class="fa fa-user"></i></a></li>
-						<li class="shopping-cart"><a href="{{route('cart')}}" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
-					
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="{{route('login')}}"><img src="frontend/images/user.svg"></a></li>
+						<li><a class="nav-link" href="{{route('cart')}}"><img src="frontend/images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
-
-		</div>
-	</nav>
+				
+		</nav>
+		<!-- End Header/Navigation -->
 
 	@yield('content')
 
-	<footer id="fh5co-footer" role="contentinfo">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-4 fh5co-widget">
-					<h3>Shop.</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-6 col-md-push-1">
-					<ul class="fh5co-footer-links">
-						<li><a href="{{ route('about') }}">About</a></li>
-                        <li><a href="{{ route('products') }}">Products</a></li>
-						<li><a href="{{ route('contact') }}">Contact</a></li>
-					</ul>
+		<!-- Start Footer Section -->
+		<footer class="footer-section">
+			<div class="container relative">
+
+				<div class="sofa-img">
+					<img src="frontend/images/sofa.png" alt="Image" class="img-fluid">
 				</div>
 
-				<div class="col-md-3 col-sm-4 col-xs-6 col-md-push-1">
-                    <ul class="fh5co-footer-links">
-                        <li><a href="#">Terms</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Testimonials</a></li>
-					</ul>
-				</div>
+				
 
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12 text-center">
-					<p>
-						<small class="block">&copy;2025.All Rights Reserved.</small>
-					</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						<ul class="list-unstyled custom-social">
+							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
 						</ul>
-					</p>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">About us</a></li>
+									<li><a href="#">shop</a></li>
+									<li><a href="#">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Support</a></li>
+									<li><a href="#">Knowledge base</a></li>
+									<li><a href="#">Live chat</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							
+						</div>
+					</div>
+
 				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved.</a>  <!-- License information: https://untree.co/license/ -->
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
+		</footer>
+		<!-- End Footer Section -->	
 
-		</div>
-	</footer>
-	</div>
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-
-	<!-- jQuery -->
-	<script src="{{asset('frontend/js/jquery.min.js')}}"></script>
-	<!-- jQuery Easing -->
-	<script src="{{asset('frontend/js/jquery.easing.1.3.js')}}"></script>
-	<!-- Bootstrap -->
-	<script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-	<!-- Waypoints -->
-	<script src="{{asset('frontend/js/jquery.waypoints.min.js')}}"></script>
-	<!-- Carousel -->
-	<script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-	<!-- countTo -->
-	<script src="{{asset('frontend/js/jquery.countTo.js')}}"></script>
-	<!-- Flexslider -->
-	<script src="{{asset('frontend/js/jquery.flexslider-min.js')}}"></script>
-	<!-- Main -->
-	<script src="{{asset('frontend/js/main.js')}}"></script>
-
+		<script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
+		<script src="{{asset('frontend/js/tiny-slider.js')}}"></script>
+		<script src="{{asset('frontend/js/custom.js')}}"></script>
 	</body>
-</html>
 
+</html>
