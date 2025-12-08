@@ -7,6 +7,7 @@ use App\Http\Controllers\frontendController;
 use App\Http\Controllers\backendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 
 
 // Route::get('/', function () {
@@ -20,10 +21,17 @@ Auth::routes();
  Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
  Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
  Route::get('/product/{slug}', [FrontendController::class, 'productDetail'])->name('productDetail');
- Route::get('/cart', [FrontendController::class, 'cart'])->name('cart'); 
- Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout'); 
- Route::get('/thankyou', [FrontendController::class, 'thankyou'])->name('thankyou'); 
  Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+ 
+ // Cart Routes (no auth required for add to cart)
+ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+ Route::get('/cart', [CartController::class, 'index'])->name('cart');
+ Route::put('/cart/update-all', [CartController::class, 'updateAll'])->name('cart.updateAll');
+ Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+ Route::get('/cart/{id}/remove', [CartController::class, 'destroy'])->name('cart.remove');
+ 
+ Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout'); 
+ Route::get('/thankyou', [FrontendController::class, 'thankyou'])->name('thankyou');
 
 
 

@@ -112,10 +112,15 @@
                         <!-- Add to Cart and WhatsApp -->
                         <div class="mb-4">
                             <div class="d-flex gap-2 flex-wrap">
-                                <button type="button" class="btn btn-primary btn-md" onclick="addToCart({{ $product->id }})"
-                                    {{ $product->stock <= 0 ? 'disabled' : '' }}>
-                                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                                </button>
+                                <form method="POST" action="{{ route('cart.add') }}" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-md"
+                                        {{ $product->stock <= 0 ? 'disabled' : '' }}>
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </form>
                                 <a href="https://wa.me/923154764713?text={{ urlencode('Check out this product: ' . $product->name . ' - ' . route('productDetail', $product->slug)) }}" 
                                    target="_blank" 
                                    class="btn btn-success btn-md">
@@ -289,5 +294,7 @@
                 img.style.border = '2px solid #007bff';
             }
         }
+
     </script>
 @endsection
+

@@ -20,7 +20,8 @@
             <div class="row">
                 <div class="col-md-6 mb-5 mb-md-0">
                     <h2 class="h3 mb-3 text-black">Billing Details</h2>
-                    <div class="p-3 p-lg-5 border bg-white">
+                    <form id="checkout-form" class="p-3 p-lg-5 border bg-white" method="POST" action="#">
+                        @csrf
                        
                         <div class="form-group row">
                             <div class="col-md-6">
@@ -85,8 +86,7 @@
                             <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control"
                                 placeholder="Write your notes here..."></textarea>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
                 <div class="col-md-6">
 
@@ -115,30 +115,40 @@
                         <div class="col-md-12">
                             <h2 class="h3 mb-3 text-black">Your Order</h2>
                             <div class="p-3 p-lg-5 border bg-white">
-                                <table class="table site-block-order-table mb-5">
-                                    <thead>
-                                        <th>Product</th>
-                                        <th>Total</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                                            <td>$250.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Polo Shirt <strong class="mx-2">x</strong> 1</td>
-                                            <td>$100.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                                            <td class="text-black">$350.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                                            <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                @if(isset($cartItems) && $cartItems->count() > 0)
+                                    <table class="table site-block-order-table mb-5">
+                                        <thead>
+                                            <th>Product</th>
+                                            <th>Total</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($cartItems as $item)
+                                                <tr>
+                                                    <td>
+                                                        @if($item->product)
+                                                            {{ $item->product->name }} <strong class="mx-2">x</strong> {{ $item->quantity }}
+                                                        @else
+                                                            Product Not Available <strong class="mx-2">x</strong> {{ $item->quantity }}
+                                                        @endif
+                                                    </td>
+                                                    <td>${{ number_format($item->price * $item->quantity, 2) }}</td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
+                                                <td class="text-black">${{ number_format($subtotal ?? 0, 2) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                                                <td class="text-black font-weight-bold"><strong>${{ number_format($total ?? 0, 2) }}</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="alert alert-warning">
+                                        <p>Your cart is empty. <a href="{{ route('shop') }}">Continue Shopping</a></p>
+                                    </div>
+                                @endif
 
 
                                 <div class="border p-3 mb-3">
@@ -155,10 +165,11 @@
 
 
 
-                                <div class="form-group">
-                                    <button class="btn btn-black btn-sm py-3 btn-block"
-                                        onclick="window.location='{{route('thankyou')}}'">Place Order</button>
-                                </div>
+                                @if(isset($cartItems) && $cartItems->count() > 0)
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-black btn-sm py-3 btn-block" form="checkout-form">Place Order</button>
+                                    </div>
+                                @endif
 
                             </div>
                         </div>
@@ -166,7 +177,6 @@
 
                 </div>
             </div>
-            <!-- </form> -->
         </div>
     </div>
 @endsection

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class frontendController extends Controller
 {
@@ -59,7 +62,28 @@ class frontendController extends Controller
         return view('frontend.cart');
     }
     public function checkout(){
-        return view('frontend.checkout');
+        if (Auth::check()) {
+            $cartItems = Cart::with('product.category', 'product.images')
+                ->where('user_id', Auth::id())
+                ->get();
+        } else {
+            $sessionId = Session::getId();
+            $cartItems = Cart::with('product.category', 'product.images')
+                ->where('session_id', $sessionId)
+                ->get();
+        }
+
+        // Redirect to cart if empty
+        if ($cartItems->count() == 0) {
+            return redirect()->route('cart')->with('error', 'Your cart is empty. Please add items to your cart before checkout.');
+        }
+
+        $subtotal = $cartItems->sum(function($item) {
+            return $item->price * $item->quantity;
+        });
+        $total = $subtotal; // Can add shipping, tax, etc. here later
+
+        return view('frontend.checkout', compact('cartItems', 'subtotal', 'total'));
     }
     public function contact()
     {
