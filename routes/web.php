@@ -8,6 +8,9 @@ use App\Http\Controllers\backendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Backend\OrderController as BackendOrderController;
+use App\Http\Controllers\Backend\CouponController as BackendCouponController;
 
 
 // Route::get('/', function () {
@@ -31,6 +34,8 @@ Auth::routes();
  Route::get('/cart/{id}/remove', [CartController::class, 'destroy'])->name('cart.remove');
  
  Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout'); 
+ Route::post('/checkout/validate-coupon', [FrontendController::class, 'validateCoupon'])->name('checkout.validateCoupon');
+ Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
  Route::get('/thankyou', [FrontendController::class, 'thankyou'])->name('thankyou');
 
 
@@ -77,4 +82,19 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     ]);
     
     Route::delete('admin/products/images/{id}', [ProductController::class, 'deleteImage'])->name('admin.products.images.delete');
+    
+    // Order Routes
+    Route::get('admin/orders', [BackendOrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('admin/orders/{id}', [BackendOrderController::class, 'show'])->name('admin.orders.show');
+    Route::get('admin/orders/{id}/edit', [BackendOrderController::class, 'edit'])->name('admin.orders.edit');
+    Route::put('admin/orders/{id}', [BackendOrderController::class, 'update'])->name('admin.orders.update');
+    Route::delete('admin/orders/{id}', [BackendOrderController::class, 'destroy'])->name('admin.orders.destroy');
+    
+    // Coupon Routes
+    Route::get('admin/coupons', [BackendCouponController::class, 'index'])->name('admin.coupons.index');
+    Route::get('admin/coupons/create', [BackendCouponController::class, 'create'])->name('admin.coupons.create');
+    Route::post('admin/coupons', [BackendCouponController::class, 'store'])->name('admin.coupons.store');
+    Route::get('admin/coupons/{id}/edit', [BackendCouponController::class, 'edit'])->name('admin.coupons.edit');
+    Route::put('admin/coupons/{id}', [BackendCouponController::class, 'update'])->name('admin.coupons.update');
+    Route::delete('admin/coupons/{id}', [BackendCouponController::class, 'destroy'])->name('admin.coupons.destroy');
 });

@@ -20,19 +20,48 @@
             <div class="row">
                 <div class="col-md-6 mb-5 mb-md-0">
                     <h2 class="h3 mb-3 text-black">Billing Details</h2>
-                    <form id="checkout-form" class="p-3 p-lg-5 border bg-white" method="POST" action="#">
+                    <form id="checkout-form" class="p-3 p-lg-5 border bg-white" method="POST" action="{{ route('checkout.store') }}">
                         @csrf
+                        <input type="hidden" name="coupon_code" id="coupon_code_input" value="{{ isset($coupon) && $coupon ? $coupon->code : '' }}">
+                        
+                        @if(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        
+                        @if($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
                        
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_fname" class="text-black">First Name <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_fname" name="c_fname">
+                                <input type="text" class="form-control @error('c_fname') is-invalid @enderror" id="c_fname" name="c_fname" value="{{ old('c_fname') }}">
+                                @error('c_fname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="c_lname" class="text-black">Last Name <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_lname" name="c_lname">
+                                <input type="text" class="form-control @error('c_lname') is-invalid @enderror" id="c_lname" name="c_lname" value="{{ old('c_lname') }}">
+                                @error('c_lname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -46,25 +75,40 @@
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_address" name="c_address"
-                                    placeholder="Street address">
+                                <input type="text" class="form-control @error('c_address') is-invalid @enderror" id="c_address" name="c_address"
+                                    placeholder="Street address" value="{{ old('c_address') }}">
+                                @error('c_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
+                            <input type="text" class="form-control" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_state_country" class="text-black">State / Country <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                                <input type="text" class="form-control @error('c_state_country') is-invalid @enderror" id="c_state_country" name="c_state_country" value="{{ old('c_state_country') }}">
+                                @error('c_state_country')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="c_postal_zip" class="text-black">Posta / Zip <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                                <input type="text" class="form-control @error('c_postal_zip') is-invalid @enderror" id="c_postal_zip" name="c_postal_zip" value="{{ old('c_postal_zip') }}">
+                                @error('c_postal_zip')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -72,12 +116,22 @@
                             <div class="col-md-6">
                                 <label for="c_email_address" class="text-black">Email Address <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                                <input type="email" class="form-control @error('c_email_address') is-invalid @enderror" id="c_email_address" name="c_email_address" value="{{ old('c_email_address') }}">
+                                @error('c_email_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_phone" name="c_phone"
-                                    placeholder="Phone Number">
+                                <input type="text" class="form-control @error('c_phone') is-invalid @enderror" id="c_phone" name="c_phone"
+                                    placeholder="Phone Number" value="{{ old('c_phone') }}">
+                                @error('c_phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -97,15 +151,30 @@
 
                                 <label for="c_code" class="text-black mb-3">Enter your coupon code if you have
                                     one</label>
+                                @if(isset($hasDiscountedProducts) && $hasDiscountedProducts)
+                                    <div class="alert alert-warning mb-3">
+                                        <small>Coupon cannot be applied to orders with discounted products.</small>
+                                    </div>
+                                @endif
                                 <div class="input-group w-75 couponcode-wrap">
-                                    <input type="text" class="form-control me-2" id="c_code"
+                                    <input type="text" class="form-control me-2" id="c_code" name="coupon_code"
                                         placeholder="Coupon Code" aria-label="Coupon Code"
-                                        aria-describedby="button-addon2">
+                                        aria-describedby="button-addon2" 
+                                        value="{{ old('coupon_code', isset($coupon) ? $coupon->code : '') }}"
+                                        {{ (isset($hasDiscountedProducts) && $hasDiscountedProducts) ? 'disabled' : '' }}>
                                     <div class="input-group-append">
                                         <button class="btn btn-black btn-sm" type="button"
-                                            id="button-addon2">Apply</button>
+                                            id="button-addon2" onclick="applyCoupon()"
+                                            {{ (isset($hasDiscountedProducts) && $hasDiscountedProducts) ? 'disabled' : '' }}>Apply</button>
                                     </div>
                                 </div>
+                                <div id="coupon-message" class="mt-2"></div>
+                                @if(isset($coupon) && $coupon)
+                                    <div class="alert alert-success mt-2">
+                                        <strong>Coupon Applied:</strong> {{ $coupon->name }} ({{ $coupon->discount_percent }}% OFF)
+                                        <button type="button" class="btn btn-sm text-decoration-none btn-link p-2 ml-2" onclick="removeCoupon()">Remove</button>
+                                    </div>
+                                @endif
 
                             </div>
                         </div>
@@ -138,6 +207,15 @@
                                                 <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
                                                 <td class="text-black">${{ number_format($subtotal ?? 0, 2) }}</td>
                                             </tr>
+                                            @if(isset($coupon) && $coupon && isset($discountAmount) && $discountAmount > 0)
+                                            <tr>
+                                                <td class="text-black">
+                                                    <strong>Coupon Discount ({{ $coupon->code }})</strong>
+                                                    <br><small class="text-success">{{ $coupon->discount_percent }}% OFF</small>
+                                                </td>
+                                                <td class="text-success">-${{ number_format($discountAmount, 2) }}</td>
+                                            </tr>
+                                            @endif
                                             <tr>
                                                 <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
                                                 <td class="text-black font-weight-bold"><strong>${{ number_format($total ?? 0, 2) }}</strong></td>
@@ -179,4 +257,74 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function applyCoupon() {
+            const couponCode = document.getElementById('c_code').value.trim();
+            const messageDiv = document.getElementById('coupon-message');
+            const button = document.getElementById('button-addon2');
+            
+            if (!couponCode) {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Please enter a coupon code.</div>';
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = 'Applying...';
+            messageDiv.innerHTML = '';
+
+            fetch('{{ route("checkout.validateCoupon") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    coupon_code: couponCode
+                })
+            })
+            .then(async response => {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Invalid response from server');
+                    }
+                    return data;
+                } else {
+                    const text = await response.text();
+                    throw new Error('Server returned non-JSON response: ' + text.substring(0, 100));
+                }
+            })
+            .then(data => {
+                if (data.success) {
+                    messageDiv.innerHTML = '<div class="alert alert-success">' + data.message + '</div>';
+                    const couponInput = document.getElementById('coupon_code_input');
+                    if (couponInput) {
+                        couponInput.value = data.coupon.code;
+                    }
+                    // Reload page to show updated totals
+                    setTimeout(() => {
+                        window.location.href = '{{ route("checkout") }}?coupon_code=' + encodeURIComponent(couponCode);
+                    }, 1000);
+                } else {
+                    messageDiv.innerHTML = '<div class="alert alert-danger">' + (data.message || 'Error applying coupon') + '</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Coupon Error:', error);
+                messageDiv.innerHTML = '<div class="alert alert-danger">' + (error.message || 'An error occurred. Please try again.') + '</div>';
+            })
+            .finally(() => {
+                button.disabled = false;
+                button.textContent = 'Apply';
+            });
+        }
+
+        function removeCoupon() {
+            window.location.href = '{{ route("checkout") }}';
+        }
+    </script>
 @endsection
+

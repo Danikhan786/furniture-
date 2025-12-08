@@ -109,13 +109,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/tables/basic-table.html">
+                        <a class="nav-link" href="{{ route('admin.orders.index') }}">
                             <span class="icon-bg"><i class="mdi mdi-cart menu-icon"></i></span>
                             <span class="menu-title">Orders</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/tables/basic-table.html">
+                        <a class="nav-link" href="{{ route('admin.coupons.index') }}">
                             <span class="icon-bg"><i class="mdi mdi-tag menu-icon"></i></span>
                             <span class="menu-title">Coupons</span>
                         </a>
