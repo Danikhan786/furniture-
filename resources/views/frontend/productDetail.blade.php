@@ -121,10 +121,9 @@
                                         <i class="fa fa-shopping-cart"></i> Add to Cart
                                     </button>
                                 </form>
-                                <a href="https://wa.me/923154764713?text={{ urlencode('Check out this product: ' . $product->name . ' - ' . route('productDetail', $product->slug)) }}" 
-                                   target="_blank" 
-                                   class="btn btn-success btn-md">
-                                   <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                                <a href="https://wa.me/33621792848?text={{ urlencode('Check out this product: ' . $product->name . ' - ' . route('productDetail', $product->slug)) }}"
+                                    target="_blank" class="btn btn-success btn-md">
+                                    <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
                                 </a>
                             </div>
                         </div>
@@ -176,58 +175,190 @@
                         <!-- Reviews Tab -->
                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="reviews-section">
-                                <!-- Individual Reviews -->
-                                <div class="reviews-list">
-                                    <h5 class="mb-4">Customer Reviews</h5>
-
-                                    <!-- Review 1 -->
-                                    <div class="review-item mb-4 pb-4 border-bottom">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h6 class="mb-1">John Doe</h6>
-                                                <div class="mb-2">
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                </div>
-                                            </div>
-                                            <small class="text-muted">2 days ago</small>
-                                        </div>
-                                        <p class="mb-0">Excellent product! The quality is outstanding and it looks
-                                            exactly as described. Very satisfied with my purchase.</p>
+                                @if (session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
                                     </div>
+                                @endif
+
+                                @if (session('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('error') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+
+                                <!-- Review Summary -->
+                                @php
+                                    $approvedReviews = $product->approvedReviews;
+                                    $averageRating = $product->average_rating;
+                                    $reviewsCount = $product->reviews_count;
+                                @endphp
+
+                                @if ($reviewsCount > 0)
+                                    <div class="review-summary mb-5 pb-4 border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center mb-3 mb-md-0">
+                                                <h2 class="mb-2">{{ number_format($averageRating, 1) }}</h2>
+                                                <div class="mb-2">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= floor($averageRating))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                        @elseif($i - 0.5 <= $averageRating)
+                                                            <i class="fa fa-star-half-alt text-warning"></i>
+                                                        @else
+                                                            <i class="far fa-star text-warning"></i>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                                <p class="text-muted mb-0">Based on {{ $reviewsCount }}
+                                                    {{ Str::plural('review', $reviewsCount) }}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                @for ($rating = 5; $rating >= 1; $rating--)
+                                                    @php
+                                                        $count = $approvedReviews->where('rating', $rating)->count();
+                                                        $percent =
+                                                            $reviewsCount > 0 ? ($count / $reviewsCount) * 100 : 0;
+                                                    @endphp
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <small class="me-2" style="width: 30px;">{{ $rating }} <i
+                                                                class="fa fa-star text-warning"></i></small>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                                style="width: {{ $percent }}%"></div>
+                                                        </div>
+                                                        <small class="text-muted"
+                                                            style="width: 40px;">{{ $count }}</small>
+                                                    </div>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <!-- Individual Reviews -->
+                                <div class="reviews-list mb-5">
+                                    <h5 class="mb-4">Customer Reviews ({{ $reviewsCount }})</h5>
+
+                                    @if ($approvedReviews->count() > 0)
+                                        @foreach ($approvedReviews as $review)
+                                            <div class="review-item mb-4 pb-4 border-bottom">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <div>
+                                                        <h6 class="mb-1">{{ $review->name }}</h6>
+                                                        <div class="mb-2">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $review->rating)
+                                                                    <i class="fa fa-star text-warning"></i>
+                                                                @else
+                                                                    <i class="far fa-star text-warning"></i>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                    </div>
+                                                    <small
+                                                        class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+                                                </div>
+                                                @if ($review->title)
+                                                    <h6 class="mb-2"><strong>{{ $review->title }}</strong></h6>
+                                                @endif
+                                                <p class="mb-0">{{ $review->comment }}</p>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="text-center py-4">
+                                            <p class="text-muted">No reviews yet. Be the first to review this product!</p>
+                                        </div>
+                                    @endif
                                 </div>
 
-                                <!-- Write Review Section (Non-functional, just UI) -->
+                                <!-- Write Review Section -->
                                 <div class="write-review-section mt-5 pt-4 border-top">
                                     <h5 class="mb-3">Write a Review</h5>
-                                    <form>
+                                    <form method="POST" action="{{ route('reviews.store') }}">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul class="mb-0">
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
                                         <div class="mb-3">
-                                            <label class="form-label">Your Rating</label>
+                                            <label class="form-label">Your Rating <span
+                                                    class="text-danger">*</span></label>
                                             <div class="rating-input">
-                                                <i class="far fa-star text-warning"
-                                                    style="font-size: 1.5rem; cursor: pointer;"></i>
-                                                <i class="far fa-star text-warning"
-                                                    style="font-size: 1.5rem; cursor: pointer;"></i>
-                                                <i class="far fa-star text-warning"
-                                                    style="font-size: 1.5rem; cursor: pointer;"></i>
-                                                <i class="far fa-star text-warning"
-                                                    style="font-size: 1.5rem; cursor: pointer;"></i>
-                                                <i class="far fa-star text-warning"
-                                                    style="font-size: 1.5rem; cursor: pointer;"></i>
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i class="far fa-star text-warning rating-star"
+                                                        data-rating="{{ $i }}"
+                                                        style="font-size: 1.5rem; cursor: pointer; margin-right: 5px;"></i>
+                                                @endfor
+                                            </div>
+                                            <input type="hidden" name="rating" id="rating-input"
+                                                value="{{ old('rating', 0) }}" required>
+                                            @error('rating')
+                                                <span class="text-danger"><small>{{ $message }}</small></span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="reviewName" class="form-label">Your Name <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text"
+                                                    class="form-control @error('name') is-invalid @enderror"
+                                                    id="reviewName" name="name" value="{{ old('name') }}" required>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="reviewEmail" class="form-label">Your Email</label>
+                                                <input type="email"
+                                                    class="form-control @error('email') is-invalid @enderror"
+                                                    id="reviewEmail" name="email" value="{{ old('email') }}">
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
+
                                         <div class="mb-3">
                                             <label for="reviewTitle" class="form-label">Review Title</label>
-                                            <input type="text" class="form-control" id="reviewTitle"
+                                            <input type="text"
+                                                class="form-control @error('title') is-invalid @enderror" id="reviewTitle"
+                                                name="title" value="{{ old('title') }}"
                                                 placeholder="Enter a title for your review">
+                                            @error('title')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="reviewText" class="form-label">Your Review</label>
-                                            <textarea class="form-control" id="reviewText" rows="5"
-                                                placeholder="Share your experience with this product..."></textarea>
+                                            <label for="reviewText" class="form-label">Your Review <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea class="form-control @error('comment') is-invalid @enderror" id="reviewText" name="comment" rows="5"
+                                                placeholder="Share your experience with this product..." required>{{ old('comment') }}</textarea>
+                                            <small class="form-text text-muted">Minimum 10 characters required</small>
+                                            @error('comment')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit Review</button>
                                     </form>
@@ -295,6 +426,55 @@
             }
         }
 
+        // Rating stars functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.rating-star');
+            const ratingInput = document.getElementById('rating-input');
+
+            stars.forEach((star, index) => {
+                star.addEventListener('click', function() {
+                    const rating = index + 1;
+                    ratingInput.value = rating;
+
+                    // Update star display
+                    stars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.classList.remove('far');
+                            s.classList.add('fa');
+                        } else {
+                            s.classList.remove('fa');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+
+                star.addEventListener('mouseenter', function() {
+                    const rating = index + 1;
+                    stars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.classList.remove('far');
+                            s.classList.add('fa');
+                        } else {
+                            s.classList.remove('fa');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+            });
+
+            // Reset stars on mouse leave if no rating selected
+            document.querySelector('.rating-input').addEventListener('mouseleave', function() {
+                const currentRating = parseInt(ratingInput.value) || 0;
+                stars.forEach((s, i) => {
+                    if (i < currentRating) {
+                        s.classList.remove('far');
+                        s.classList.add('fa');
+                    } else {
+                        s.classList.remove('fa');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
     </script>
 @endsection
-

@@ -44,7 +44,7 @@ class frontendController extends Controller
 
     public function productDetail($slug)
     {
-        $product = Product::with(['category', 'images'])
+        $product = Product::with(['category', 'images', 'approvedReviews.user'])
             ->where('slug', $slug)
             ->where('status', 'active')
             ->firstOrFail();

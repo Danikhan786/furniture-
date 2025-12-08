@@ -11,6 +11,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\CouponController as BackendCouponController;
+use App\Http\Controllers\Backend\ReviewController as BackendReviewController;
+use App\Http\Controllers\Backend\ContactController as BackendContactController;
 
 
 // Route::get('/', function () {
@@ -25,6 +27,7 @@ Auth::routes();
  Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
  Route::get('/product/{slug}', [FrontendController::class, 'productDetail'])->name('productDetail');
  Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+ Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
  
  // Cart Routes (no auth required for add to cart)
  Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
@@ -37,6 +40,9 @@ Auth::routes();
  Route::post('/checkout/validate-coupon', [FrontendController::class, 'validateCoupon'])->name('checkout.validateCoupon');
  Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
  Route::get('/thankyou', [FrontendController::class, 'thankyou'])->name('thankyou');
+ 
+ // Review Routes
+ Route::post('/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
 
 
 
@@ -97,4 +103,16 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/coupons/{id}/edit', [BackendCouponController::class, 'edit'])->name('admin.coupons.edit');
     Route::put('admin/coupons/{id}', [BackendCouponController::class, 'update'])->name('admin.coupons.update');
     Route::delete('admin/coupons/{id}', [BackendCouponController::class, 'destroy'])->name('admin.coupons.destroy');
+    
+    // Review Routes
+    Route::get('admin/reviews', [BackendReviewController::class, 'index'])->name('admin.reviews.index');
+    Route::post('admin/reviews/{id}/approve', [BackendReviewController::class, 'approve'])->name('admin.reviews.approve');
+    Route::post('admin/reviews/{id}/reject', [BackendReviewController::class, 'reject'])->name('admin.reviews.reject');
+    Route::delete('admin/reviews/{id}', [BackendReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+    
+    // Contact Routes
+    Route::get('admin/contacts', [BackendContactController::class, 'index'])->name('admin.contacts.index');
+    Route::get('admin/contacts/{id}', [BackendContactController::class, 'show'])->name('admin.contacts.show');
+    Route::put('admin/contacts/{id}/status', [BackendContactController::class, 'updateStatus'])->name('admin.contacts.updateStatus');
+    Route::delete('admin/contacts/{id}', [BackendContactController::class, 'destroy'])->name('admin.contacts.destroy');
 });

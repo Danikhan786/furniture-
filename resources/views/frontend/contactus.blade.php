@@ -32,7 +32,7 @@
 
 
                         <div class="row mb-5">
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <div class="service no-shadow align-items-center link horizontal d-flex active"
                                     data-aos="fade-left" data-aos-delay="0">
                                     <div class="service-icon color-1 mb-4">
@@ -46,9 +46,9 @@
                                         <p>43 Raymouth Rd. Baltemoer, London 3910</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
-                            </div>
+                            </div> --}}
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="service no-shadow align-items-center link horizontal d-flex active"
                                     data-aos="fade-left" data-aos-delay="0">
                                     <div class="service-icon color-1 mb-4">
@@ -59,12 +59,12 @@
                                         </svg>
                                     </div> <!-- /.icon -->
                                     <div class="service-contents">
-                                        <p>info@yourdomain.com</p>
+                                        <p>oasismeubles.info@gmail.com</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="service no-shadow align-items-center link horizontal d-flex active"
                                     data-aos="fade-left" data-aos-delay="0">
                                     <div class="service-icon color-1 mb-4">
@@ -75,35 +75,112 @@
                                         </svg>
                                     </div> <!-- /.icon -->
                                     <div class="service-contents">
-                                        <p>+1 294 3925 3939</p>
+                                        <p>+33 621 7928 48</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
                             </div>
                         </div>
 
-                        <form>
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('contact.store') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="text-black" for="fname">First name</label>
-                                        <input type="text" class="form-control" id="fname">
+                                        <label class="text-black" for="fname">First name <span class="text-danger">*</span></label>
+                                        <input type="text" 
+                                               class="form-control @error('fname') is-invalid @enderror" 
+                                               id="fname" 
+                                               name="fname" 
+                                               value="{{ old('fname') }}"
+                                               required>
+                                        @error('fname')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="text-black" for="lname">Last name</label>
-                                        <input type="text" class="form-control" id="lname">
+                                        <label class="text-black" for="lname">Last name <span class="text-danger">*</span></label>
+                                        <input type="text" 
+                                               class="form-control @error('lname') is-invalid @enderror" 
+                                               id="lname" 
+                                               name="lname" 
+                                               value="{{ old('lname') }}"
+                                               required>
+                                        @error('lname')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="text-black" for="phone">Phone <span class="text-danger">*</span></label>
+                                        <input type="text" 
+                                               class="form-control @error('phone') is-invalid @enderror" 
+                                               id="phone" 
+                                               name="phone" 
+                                               value="{{ old('phone') }}"
+                                               required>
+                                        @error('phone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="text-black" for="email">Email address</label>
-                                <input type="email" class="form-control" id="email">
+                                <label class="text-black" for="email">Email address <span class="text-danger">*</span></label>
+                                <input type="email" 
+                                       class="form-control @error('email') is-invalid @enderror" 
+                                       id="email" 
+                                       name="email" 
+                                       value="{{ old('email') }}"
+                                       required>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group mb-5">
-                                <label class="text-black" for="message">Message</label>
-                                <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+                                <label class="text-black" for="message">Message <span class="text-danger">*</span></label>
+                                <textarea name="message" 
+                                          class="form-control @error('message') is-invalid @enderror" 
+                                          id="message" 
+                                          cols="30" 
+                                          rows="5"
+                                          required>{{ old('message') }}</textarea>
+                                <small class="form-text text-muted">Minimum 10 characters required</small>
+                                @error('message')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>

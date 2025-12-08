@@ -121,6 +121,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.reviews.index') }}">
+                            <span class="icon-bg"><i class="mdi mdi-star menu-icon"></i></span>
+                            <span class="menu-title">Reviews</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.contacts.index') }}">
+                            <span class="icon-bg"><i class="mdi mdi-email menu-icon"></i></span>
+                            <span class="menu-title">Contacts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="pages/tables/basic-table.html">
                             <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
                             <span class="menu-title">Customers</span>
