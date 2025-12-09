@@ -133,7 +133,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/tables/basic-table.html">
+                        <a class="nav-link" href="{{ route('admin.customers.index') }}">
                             <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
                             <span class="menu-title">Customers</span>
                         </a>

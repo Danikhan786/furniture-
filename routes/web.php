@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\CouponController as BackendCouponController;
 use App\Http\Controllers\Backend\ReviewController as BackendReviewController;
 use App\Http\Controllers\Backend\ContactController as BackendContactController;
+use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 
 
 // Route::get('/', function () {
@@ -115,4 +116,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/contacts/{id}', [BackendContactController::class, 'show'])->name('admin.contacts.show');
     Route::put('admin/contacts/{id}/status', [BackendContactController::class, 'updateStatus'])->name('admin.contacts.updateStatus');
     Route::delete('admin/contacts/{id}', [BackendContactController::class, 'destroy'])->name('admin.contacts.destroy');
+    
+    // Customer Routes
+    Route::get('admin/customers', [BackendCustomerController::class, 'index'])->name('admin.customers.index');
+    Route::get('admin/customers/{id}', [BackendCustomerController::class, 'show'])->name('admin.customers.show');
 });

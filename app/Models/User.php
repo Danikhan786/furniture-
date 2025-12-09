@@ -58,4 +58,12 @@ class User extends Authenticatable
             get: fn ($value) =>  ["user", "admin"][$value],
         );
     }
+
+    /**
+     * Get the orders for this user.
+     */
+    public function orders()
+    {
+        return $this->hasMany(\App\Models\Order::class);
+    }
 }
