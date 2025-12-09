@@ -21,12 +21,12 @@
                                     <div>
                                         <p class="text-muted mb-2">Total Revenue</p>
                                         <h3 class="mb-0 text-dark font-weight-bold">$ {{ number_format($totalRevenue ?? 0, 2) }}</h3>
-                                        @if(isset($revenueChange))
+                                        {{-- @if(isset($revenueChange))
                                             <small class="{{ $revenueChange >= 0 ? 'text-success' : 'text-danger' }}">
                                                 <i class="mdi mdi-arrow-{{ $revenueChange >= 0 ? 'up' : 'down' }}"></i> 
                                                 {{ abs($revenueChange) }}% from last month
                                             </small>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <div class="icon-md bg-primary text-white rounded-circle px-2 py-1">
                                         <i class="mdi mdi-currency-usd"></i>

@@ -6,10 +6,13 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Cart;
 use App\Models\Coupon;
+use App\Models\User;
+use App\Mail\NewOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -153,6 +156,21 @@ class OrderController extends Controller
 
             // Commit transaction
             DB::commit();
+
+            // Load order relationships for email
+            $order->load('items.product');
+
+            // Send email notification to all admin users
+            try {
+                $adminUsers = User::where('type', 1)->get(); // type 1 = admin
+                
+                foreach ($adminUsers as $admin) {
+                    Mail::to($admin->email)->send(new NewOrderNotification($order));
+                }
+            } catch (\Exception $e) {
+                // Log the error but don't fail the order
+                \Log::error('Failed to send order notification email: ' . $e->getMessage());
+            }
 
             // Redirect to thank you page with order number
             return redirect()->route('thankyou')->with('order_number', $order->order_number);
