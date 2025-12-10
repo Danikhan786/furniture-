@@ -28,7 +28,12 @@
     <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
         <div class="container">
-            <a class="navbar-brand" href="{{ route('index') }}">Oasis Meubles<span>.</span></a>
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('index') }}">
+                <img src="{{ asset('frontend/images/logo.png') }}" 
+                     alt="Oasis Meubles Logo" 
+                     class="img-fluid navbar-logo"
+                     style="max-width: 180px; height: auto; max-height: 60px; width: auto;">
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">

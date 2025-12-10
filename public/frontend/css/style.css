@@ -1057,3 +1057,33 @@ textarea {
   z-index: 1000;
   text-decoration: none;
 }
+
+
+  /* Responsive logo styling */
+  .navbar-logo {
+    transition: all 0.3s ease;
+}
+
+/* Mobile devices */
+@media (max-width: 576px) {
+    .navbar-logo {
+        max-width: 120px !important;
+        max-height: 45px !important;
+    }
+}
+
+/* Small tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .navbar-logo {
+        max-width: 150px !important;
+        max-height: 55px !important;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .navbar-logo {
+        max-width: 200px !important;
+        max-height: 70px !important;
+    }
+}
