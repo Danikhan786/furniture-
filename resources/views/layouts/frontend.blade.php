@@ -136,10 +136,11 @@
                         Pellentesque habitant</p>
 
                     <ul class="list-unstyled custom-social">
-                        <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+                        <!-- <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+                        <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li> -->
+                        <li><a href="https://www.instagram.com/oasis.meubles/" target="_blank"><span class="fa fa-brands fa-instagram"></span></a></li>
+                        <li><a href="https://www.tiktok.com/@oasis.meubles?_r=1&_t=ZN-926kuA1Kcx4" target="_blank"><span class="fa-brands fa-tiktok"></span></a></li>
+                        <!-- <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li> -->
                     </ul>
                 </div>
 

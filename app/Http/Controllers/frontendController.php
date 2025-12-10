@@ -28,18 +28,57 @@ class frontendController extends Controller
         return view('frontend.aboutus');
     }
 
-    public function Shop()
+    public function Shop(Request $request)
     {
-        $products = Product::with(['category', 'images'])
-            ->where('status', 'active')
-            ->latest()
-            ->paginate(12);
+        $query = Product::with(['category', 'images'])
+            ->where('status', 'active');
         
-        $categories = Category::where('status', 'active')
+        // Filter by category (multiple categories can be selected)
+        if ($request->filled('categories')) {
+            $categories = is_array($request->input('categories')) 
+                ? $request->input('categories') 
+                : [$request->input('categories')];
+            $query->whereIn('category_id', $categories);
+        }
+        
+        // Filter by price range (check effective price: discount_price if available, otherwise price)
+        if ($request->filled('min_price') || $request->filled('max_price')) {
+            $query->where(function($q) use ($request) {
+                // Products with discount_price
+                $q->where(function($subQ) use ($request) {
+                    $subQ->whereNotNull('discount_price');
+                    if ($request->filled('min_price')) {
+                        $subQ->where('discount_price', '>=', $request->input('min_price'));
+                    }
+                    if ($request->filled('max_price')) {
+                        $subQ->where('discount_price', '<=', $request->input('max_price'));
+                    }
+                })
+                // Products without discount_price (use regular price)
+                ->orWhere(function($subQ) use ($request) {
+                    $subQ->whereNull('discount_price');
+                    if ($request->filled('min_price')) {
+                        $subQ->where('price', '>=', $request->input('min_price'));
+                    }
+                    if ($request->filled('max_price')) {
+                        $subQ->where('price', '<=', $request->input('max_price'));
+                    }
+                });
+            });
+        }
+        
+        $products = $query->latest()->paginate(12)->withQueryString();
+        
+        // Get all active categories (parent and children) for filter
+        $categories = Category::active()
+            ->orderBy('parent_id')
             ->orderBy('name')
             ->get();
         
-        return view('frontend.shop', compact('products', 'categories'));
+        // Get parent categories for sidebar
+        $parentCategories = Category::parents()->active()->orderBy('name')->get();
+        
+        return view('frontend.shop', compact('products', 'categories', 'parentCategories'));
     }
 
     public function productDetail($slug)
