@@ -85,7 +85,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <div class="btn-group" role="group">
+                                                <div class="d-grid gap-3" role="group">
                                                     <a href="{{ route('admin.categories.edit', $category->id) }}" 
                                                        class="btn btn-sm btn-info" 
                                                        title="Edit">

@@ -91,7 +91,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <div class="d-flex gap-2">
+                                                <div class="d-grid gap-3">
                                                     <a href="{{ route('admin.coupons.edit', $coupon->id) }}" 
                                                        class="btn btn-sm btn-primary" 
                                                        title="Edit">

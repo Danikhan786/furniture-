@@ -98,7 +98,7 @@
                                                 <br><small class="text-muted">{{ $review->created_at->format('h:i A') }}</small>
                                             </td>
                                             <td>
-                                                <div class="d-flex gap-2">
+                                                <div class="d-grid gap-3">
                                                     @if($review->status == 'pending')
                                                         <form action="{{ route('admin.reviews.approve', $review->id) }}" 
                                                               method="POST" 

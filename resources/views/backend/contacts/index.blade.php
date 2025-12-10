@@ -68,7 +68,7 @@
                                                 <br><small class="text-muted">{{ $contact->created_at->format('h:i A') }}</small>
                                             </td>
                                             <td>
-                                                <div class="d-flex gap-2">
+                                                <div class="d-grid gap-3">
                                                     <a href="{{ route('admin.contacts.show', $contact->id) }}" 
                                                        class="btn btn-sm btn-info" 
                                                        title="View">
