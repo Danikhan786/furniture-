@@ -147,30 +147,19 @@
                     <div class="row links-wrap">
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">shop</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="{{ route('index') }}">Home</a></li>
+                                <li><a href="{{ route('about') }}">About us</a></li>
+                                <li><a href="{{ route('shop') }}">shop</a></li>
                             </ul>
                         </div>
-
+                        
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Knowledge base</a></li>
-                                <li><a href="#">Live chat</a></li>
+                                <li><a href="{{ route('contact') }}">Contact us</a></li>
+                                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
+                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                             </ul>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Jobs</a></li>
-                                <li><a href="#">Our team</a></li>
-                                <li><a href="#">Leadership</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-
-
+                        </div>    
                     </div>
                 </div>
 
@@ -187,12 +176,12 @@
                         </p>
                     </div>
 
-                    <div class="col-lg-6 text-center text-lg-end">
+                    <!--                     <div class="col-lg-6 text-center text-lg-end">
                         <ul class="list-unstyled d-inline-flex ms-auto">
-                            <li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li class="me-4"><a href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
+                            <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

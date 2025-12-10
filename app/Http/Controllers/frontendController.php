@@ -202,4 +202,14 @@ class frontendController extends Controller
     {
         return view('frontend.thankyou');
     }
+    
+    public function termsAndConditions()
+    {
+        return view('frontend.terms');
+    }
+    
+    public function privacyPolicy()
+    {
+        return view('frontend.privacy');
+    }
 }

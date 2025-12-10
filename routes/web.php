@@ -29,6 +29,8 @@ Auth::routes();
  Route::get('/product/{slug}', [FrontendController::class, 'productDetail'])->name('productDetail');
  Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
  Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+ Route::get('/terms-and-conditions', [FrontendController::class, 'termsAndConditions'])->name('terms');
+ Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy');
  
  // Cart Routes (no auth required for add to cart)
  Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
