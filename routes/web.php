@@ -123,3 +123,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/customers', [BackendCustomerController::class, 'index'])->name('admin.customers.index');
     Route::get('admin/customers/{id}', [BackendCustomerController::class, 'show'])->name('admin.customers.show');
 });
+
+
+Route::fallback(function () {
+    return redirect('/');
+});

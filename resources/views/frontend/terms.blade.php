@@ -26,7 +26,7 @@
 
                         <h2 class="mb-4">1. Introduction</h2>
                         <p class="mb-4">
-                            Welcome to Oasis Mubales. These Terms and Conditions ("Terms") govern your use of our website and services. 
+                            Welcome to Oasis Meubles. These Terms and Conditions ("Terms") govern your use of our website and services. 
                             By accessing or using our website, you agree to be bound by these Terms. If you disagree with any part of these 
                             terms, you may not access the service.
                         </p>
@@ -72,21 +72,21 @@
 
                         <h2 class="mb-4">7. Intellectual Property</h2>
                         <p class="mb-4">
-                            All content on this website, including text, graphics, logos, images, and software, is the property of Oasis Mubales 
+                            All content on this website, including text, graphics, logos, images, and software, is the property of Oasis Meubles 
                             or its content suppliers and is protected by copyright and other intellectual property laws. You may not reproduce, 
                             distribute, modify, or create derivative works from any content without our prior written permission.
                         </p>
 
                         <h2 class="mb-4">8. Limitation of Liability</h2>
                         <p class="mb-4">
-                            To the fullest extent permitted by law, Oasis Mubales shall not be liable for any indirect, incidental, special, 
+                            To the fullest extent permitted by law, Oasis Meubles shall not be liable for any indirect, incidental, special, 
                             consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, 
                             or any loss of data, use, goodwill, or other intangible losses resulting from your use of our website or products.
                         </p>
 
                         <h2 class="mb-4">9. Indemnification</h2>
                         <p class="mb-4">
-                            You agree to indemnify, defend, and hold harmless Oasis Mubales and its officers, directors, employees, and agents 
+                            You agree to indemnify, defend, and hold harmless Oasis Meubles and its officers, directors, employees, and agents 
                             from any claims, damages, losses, liabilities, and expenses (including legal fees) arising out of your use of the 
                             website or violation of these Terms.
                         </p>
@@ -100,7 +100,7 @@
 
                         <h2 class="mb-4">11. Governing Law</h2>
                         <p class="mb-4">
-                            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Oasis Mubales 
+                            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Oasis Meubles 
                             operates, without regard to its conflict of law provisions.
                         </p>
 

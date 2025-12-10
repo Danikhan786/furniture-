@@ -26,7 +26,7 @@
 
                         <h2 class="mb-4">1. Introduction</h2>
                         <p class="mb-4">
-                            Oasis Mubales ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how 
+                            Oasis Meubles ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how 
                             we collect, use, disclose, and safeguard your information when you visit our website and make purchases from us.
                         </p>
 

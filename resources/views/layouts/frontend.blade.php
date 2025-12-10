@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>oasis mubales</title>
+    <title>Oasis Meubles</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
     <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
         <div class="container">
-            <a class="navbar-brand" href="{{ route('index') }}">Oasis Mubales<span>.</span></a>
+            <a class="navbar-brand" href="{{ route('index') }}">Oasis Meubles<span>.</span></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,7 +129,7 @@
 
             <div class="row g-5 mb-5">
                 <div class="col-lg-4">
-                    <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Oasis Mubales<span>.</span></a>
+                    <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Oasis Meubles<span>.</span></a>
                     </div>
                     <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus
                         malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
