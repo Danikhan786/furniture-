@@ -137,7 +137,8 @@ class ProductController extends Controller
             }
 
             foreach ($request->file('images') as $index => $file) {
-                $imageName = time() . '_' . Str::random(10) . '_' . $index . '.' . $file->getClientOriginalExtension();
+                $extension = $file->guessExtension() ?: $file->getClientOriginalExtension();
+                $imageName = time() . '_' . Str::random(10) . '_' . $index . '.' . $extension;
                 $file->move($destinationPath, $imageName);
                 
                 ProductImage::create([
@@ -275,22 +276,36 @@ class ProductController extends Controller
         if ($product->image) {
             $imagePath = public_path($product->image);
             if (File::exists($imagePath)) {
-                File::delete($imagePath);
+                try {
+                    File::delete($imagePath);
+                } catch (\Exception $e) {
+                    \Log::warning('Failed to delete product main image: ' . $imagePath . ' - ' . $e->getMessage());
+                }
             }
         }
 
-        // Delete all product images
+        // Delete all product images from database and filesystem
         foreach ($product->images as $productImage) {
-            $imagePath = public_path($productImage->image);
-            if (File::exists($imagePath)) {
-                File::delete($imagePath);
+            // Delete image file from public folder
+            if ($productImage->image) {
+                $imagePath = public_path($productImage->image);
+                if (File::exists($imagePath)) {
+                    try {
+                        File::delete($imagePath);
+                    } catch (\Exception $e) {
+                        \Log::warning('Failed to delete product image: ' . $imagePath . ' - ' . $e->getMessage());
+                    }
+                }
             }
+            // Delete the ProductImage record from database
+            $productImage->delete();
         }
         
+        // Delete the product record (this will cascade delete related records if configured)
         $product->delete();
         
         return redirect()->route('admin.products.index')
-            ->with('success', 'Product deleted successfully.');
+            ->with('success', 'Product and all associated images deleted successfully.');
     }
 
     /**

@@ -195,13 +195,17 @@ class CategoryController extends Controller
         if ($category->image) {
             $imagePath = public_path($category->image);
             if (File::exists($imagePath)) {
-                File::delete($imagePath);
+                try {
+                    File::delete($imagePath);
+                } catch (\Exception $e) {
+                    \Log::warning('Failed to delete category image: ' . $imagePath . ' - ' . $e->getMessage());
+                }
             }
         }
 
         $category->delete();
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Category deleted successfully.');
+            ->with('success', 'Category and associated image deleted successfully.');
     }
 }
