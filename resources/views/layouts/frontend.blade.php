@@ -190,6 +190,9 @@
     </footer>
     <!-- End Footer Section -->
 
+    <a href="https://wa.me/33621792848" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/tiny-slider.js') }}"></script>
