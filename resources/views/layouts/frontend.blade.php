@@ -58,8 +58,14 @@
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart') }}">
+                        <a class="nav-link position-relative" href="{{ route('cart') }}" style="padding: 0.5rem 1rem;">
                             <img src="../../frontend/images/cart.svg" alt="Cart">
+                            @if(isset($cartCount) && $cartCount > 0)
+                                <span class="position-absolute  translate-middle badge rounded-pill bg-danger" 
+                                      style="font-size: 0.65rem; padding: 0.25em 0.5em; min-width: 1.5em; line-height: 1.2;">
+                                    {{ $cartCount > 99 ? '99+' : $cartCount }}
+                                </span>
+                            @endif
                         </a>
                     </li>
                     @auth
