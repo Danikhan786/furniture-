@@ -11,11 +11,17 @@ class OrderController extends Controller
     /**
      * Display a listing of orders.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user', 'items.product.images', 'coupon')
-            ->latest()
-            ->paginate(15);
+        $query = Order::with('user', 'items.product.images', 'coupon');
+        
+        // Search by order number
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('order_number', 'like', '%' . $search . '%');
+        }
+        
+        $orders = $query->latest()->paginate(15)->withQueryString();
 
         return view('backend.orders.index', compact('orders'));
     }

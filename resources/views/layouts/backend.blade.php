@@ -35,17 +35,51 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
+                @if(request()->routeIs('admin.products.index'))
                 <div class="search-field d-none d-xl-block">
-                    <form class="d-flex align-items-center h-100" action="#">
+                    <form class="d-flex align-items-center h-100" action="{{ route('admin.products.index') }}" method="GET">
                         <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
                             </div>
-                            <input type="text" class="form-control bg-transparent border-0"
-                                placeholder="Search products">
+                            <input type="text" 
+                                   name="search" 
+                                   class="form-control bg-transparent border-0" 
+                                   placeholder="Search products by name..."
+                                   value="{{ request('search') }}">
+                            @if(request('search'))
+                            <div class="input-group-append">
+                                <a href="{{ route('admin.products.index') }}" class="input-group-text bg-transparent border-0" style="cursor: pointer;">
+                                    <i class="mdi mdi-close"></i>
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     </form>
                 </div>
+                @elseif(request()->routeIs('admin.orders.index'))
+                <div class="search-field d-none d-xl-block">
+                    <form class="d-flex align-items-center h-100" action="{{ route('admin.orders.index') }}" method="GET">
+                        <div class="input-group">
+                            <div class="input-group-prepend bg-transparent">
+                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                            </div>
+                            <input type="text" 
+                                   name="search" 
+                                   class="form-control bg-transparent border-0" 
+                                   placeholder="Search orders by order number..."
+                                   value="{{ request('search') }}">
+                            @if(request('search'))
+                            <div class="input-group-append">
+                                <a href="{{ route('admin.orders.index') }}" class="input-group-text bg-transparent border-0" style="cursor: pointer;">
+                                    <i class="mdi mdi-close"></i>
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+                @endif
                 <ul class="navbar-nav navbar-nav-right">
 
                     <li class="nav-item nav-profile dropdown">

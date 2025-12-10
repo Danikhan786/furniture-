@@ -10,6 +10,37 @@
                             <h4 class="card-title mb-0">Orders</h4>
                         </div>
                         
+                        <!-- Search Form -->
+                        <div class="mb-4">
+                            <form action="{{ route('admin.orders.index') }}" method="GET" class="d-flex align-items-center">
+                                <div class="input-group" style="max-width: 400px;">
+                                    <input type="text" 
+                                           name="search" 
+                                           class="form-control" 
+                                           placeholder="Search orders by order number..." 
+                                           value="{{ request('search') }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit">
+                                            <i class="mdi mdi-magnify"></i> Search
+                                        </button>
+                                        @if(request('search'))
+                                            <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">
+                                                <i class="mdi mdi-close"></i> Clear
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </form>
+                            @if(request('search'))
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        Showing results for: <strong>"{{ request('search') }}"</strong>
+                                        ({{ $orders->total() }} {{ Str::plural('result', $orders->total()) }})
+                                    </small>
+                                </div>
+                            @endif
+                        </div>
+                        
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}

@@ -58,11 +58,17 @@ class ProductController extends Controller
     /**
      * Display a listing of the products.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category', 'images')
-            ->latest()
-            ->paginate(15);
+        $query = Product::with('category', 'images');
+        
+        // Search by product name
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+        
+        $products = $query->latest()->paginate(15)->withQueryString();
         
         return view('backend.products.index', compact('products'));
     }

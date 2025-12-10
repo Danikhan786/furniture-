@@ -8,9 +8,42 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="card-title mb-0">Products</h4>
+                            
                             <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm">
                                 <i class="mdi mdi-plus"></i> Add New Product
                             </a>
+                        </div>
+                        
+                        <!-- Search Form -->
+                        <div class="mb-4">
+                            <form action="{{ route('admin.products.index') }}" method="GET" class="d-flex align-items-center">
+                                <div class="input-group" style="max-width: 400px;">
+                                    <input type="text" 
+                                           name="search" 
+                                           class="form-control" 
+                                           placeholder="Search products by name..." 
+                                           value="{{ request('search') }}"
+                                           >
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit">
+                                            <i class="mdi mdi-magnify"></i> Search
+                                        </button>
+                                        @if(request('search'))
+                                            <a href="{{ route('admin.products.index') }}" class="btn btn-outline-secondary">
+                                                <i class="mdi mdi-close"></i> Clear
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </form>
+                            @if(request('search'))
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        Showing results for: <strong>"{{ request('search') }}"</strong>
+                                        ({{ $products->total() }} {{ Str::plural('result', $products->total()) }})
+                                    </small>
+                                </div>
+                            @endif
                         </div>
                         
                         @if(session('success'))
