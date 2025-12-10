@@ -114,7 +114,9 @@ class ProductController extends Controller
         // Handle main image upload - store in public/products folder
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            // Use guessExtension() for better security instead of getClientOriginalExtension()
+            $extension = $image->guessExtension() ?: $image->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::random(10) . '.' . $extension;
             
             $destinationPath = public_path('products');
             if (!File::exists($destinationPath)) {
@@ -222,7 +224,8 @@ class ProductController extends Controller
             }
             
             $image = $request->file('image');
-            $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $extension = $image->guessExtension() ?: $image->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::random(10) . '.' . $extension;
             
             $destinationPath = public_path('products');
             if (!File::exists($destinationPath)) {
@@ -245,7 +248,8 @@ class ProductController extends Controller
             $maxSortOrder = $product->images()->max('sort_order') ?? -1;
 
             foreach ($request->file('images') as $index => $file) {
-                $imageName = time() . '_' . Str::random(10) . '_' . $index . '.' . $file->getClientOriginalExtension();
+                $extension = $file->guessExtension() ?: $file->getClientOriginalExtension();
+                $imageName = time() . '_' . Str::random(10) . '_' . $index . '.' . $extension;
                 $file->move($destinationPath, $imageName);
                 
                 ProductImage::create([

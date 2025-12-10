@@ -58,7 +58,8 @@ class CategoryController extends Controller
         // Handle image upload - store in public/categories folder
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $extension = $image->guessExtension() ?: $image->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::random(10) . '.' . $extension;
             
             // Create categories directory if it doesn't exist
             $destinationPath = public_path('categories');
@@ -157,7 +158,8 @@ class CategoryController extends Controller
             }
             
             $image = $request->file('image');
-            $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $extension = $image->guessExtension() ?: $image->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::random(10) . '.' . $extension;
             
             // Create categories directory if it doesn't exist
             $destinationPath = public_path('categories');

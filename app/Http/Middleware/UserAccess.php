@@ -19,6 +19,11 @@ class UserAccess
             return $next($request);
         }
           
-        return response()->json(['You do not have permission to access for this page.']);
+        // Redirect unauthorized users instead of returning JSON
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'You do not have permission to access this page.'], 403);
+        }
+        
+        return redirect()->route('home')->with('error', 'You do not have permission to access this page.');
     }
 }
