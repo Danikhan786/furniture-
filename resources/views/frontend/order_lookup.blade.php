@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Order Lookup</h1>
-                        <p class="mb-4">Enter your order number and email to view your order details.</p>
+                        <p class="mb-4">Enter your order number to view your order details and status.</p>
                     </div>
                 </div>
             </div>
@@ -45,12 +45,8 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="order_number" class="form-label">Order Number</label>
-                                    <input type="text" class="form-control" id="order_number" name="order_number" value="{{ old('order_number') }}" required>
+                                    <input type="text" class="form-control" id="order_number" name="order_number" value="{{ old('order_number') }}" placeholder="Enter your order number" required>
                                     <small class="text-muted">Example: ORD-XXXXXX</small>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Check Order</button>
                             </form>

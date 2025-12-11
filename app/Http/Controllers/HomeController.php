@@ -28,21 +28,55 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         
-        // Get all orders for the user
+        // Get all orders for the user (by user_id or by email if user_id is null)
+        // This ensures orders placed before login are also shown
         $orders = Order::with('items.product.images')
-            ->where('user_id', $user->id)
+            ->where(function($query) use ($user) {
+                $query->where('user_id', $user->id)
+                      ->orWhere(function($q) use ($user) {
+                          $q->where('email', $user->email)
+                            ->whereNull('user_id');
+                      });
+            })
             ->latest()
             ->paginate(10);
         
-        // Calculate statistics
-        $totalOrders = Order::where('user_id', $user->id)->count();
-        $totalSpent = Order::where('user_id', $user->id)
+        // Calculate statistics - include orders by email as well
+        $totalOrders = Order::where(function($query) use ($user) {
+                $query->where('user_id', $user->id)
+                      ->orWhere(function($q) use ($user) {
+                          $q->where('email', $user->email)
+                            ->whereNull('user_id');
+                      });
+            })->count();
+            
+        $totalSpent = Order::where(function($query) use ($user) {
+                $query->where('user_id', $user->id)
+                      ->orWhere(function($q) use ($user) {
+                          $q->where('email', $user->email)
+                            ->whereNull('user_id');
+                      });
+            })
             ->where('status', '!=', 'cancelled')
             ->sum('total');
-        $pendingOrders = Order::where('user_id', $user->id)
+            
+        $pendingOrders = Order::where(function($query) use ($user) {
+                $query->where('user_id', $user->id)
+                      ->orWhere(function($q) use ($user) {
+                          $q->where('email', $user->email)
+                            ->whereNull('user_id');
+                      });
+            })
             ->where('status', 'pending')
             ->count();
-        $completedOrders = Order::where('user_id', $user->id)
+            
+        $completedOrders = Order::where(function($query) use ($user) {
+                $query->where('user_id', $user->id)
+                      ->orWhere(function($q) use ($user) {
+                          $q->where('email', $user->email)
+                            ->whereNull('user_id');
+                      });
+            })
             ->where('status', 'completed')
             ->count();
         

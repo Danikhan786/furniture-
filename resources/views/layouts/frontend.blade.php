@@ -77,6 +77,10 @@
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">{{ __('messages.nav.contact') }}</a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('order.lookup') ? 'active' : '' }}">
+                        <a class="nav-link {{ request()->routeIs('order.lookup') ? 'active' : '' }}"
+                            href="{{ route('order.lookup') }}">Order Lookup</a>
+                    </li>
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

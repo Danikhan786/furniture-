@@ -208,16 +208,14 @@ class OrderController extends Controller
     {
         $validated = $request->validate([
             'order_number' => 'required|string',
-            'email' => 'required|email',
         ]);
 
         $order = Order::with('items.product')
             ->where('order_number', $validated['order_number'])
-            ->where('email', $validated['email'])
             ->first();
 
         if (!$order) {
-            return redirect()->back()->withInput()->with('error', 'Order not found. Please check the order number and email.');
+            return redirect()->back()->withInput()->with('error', 'Order not found. Please check the order number.');
         }
 
         return view('frontend.order_lookup', ['order' => $order]);
