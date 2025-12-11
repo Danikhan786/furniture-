@@ -215,7 +215,7 @@ class OrderController extends Controller
             ->first();
 
         if (!$order) {
-            return redirect()->back()->withInput()->with('error', 'Order not found. Please check the order number.');
+            return redirect()->back()->withInput()->with('error', __('messages.orderLookup.orderNotFound'));
         }
 
         return view('frontend.order_lookup', ['order' => $order]);

@@ -79,7 +79,7 @@
                     </li>
                     <li class="nav-item {{ request()->routeIs('order.lookup') ? 'active' : '' }}">
                         <a class="nav-link {{ request()->routeIs('order.lookup') ? 'active' : '' }}"
-                            href="{{ route('order.lookup') }}">Order Lookup</a>
+                            href="{{ route('order.lookup') }}">{{ __('messages.orderLookup.title') }}</a>
                     </li>
                 </ul>
 
