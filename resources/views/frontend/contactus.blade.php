@@ -7,9 +7,8 @@
             <div class="row justify-content-between">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <h1>Contact</h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-                            vulputate velit imperdiet dolor tempor tristique.</p>
+                        <h1>{{ __('messages.contact.title') }}</h1>
+                        <p class="mb-4">{{ __('messages.contact.description') }}</p>
                        
                     </div>
                 </div>
@@ -104,7 +103,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="text-black" for="fname">First name <span class="text-danger">*</span></label>
+                                        <label class="text-black" for="fname">{{ __('messages.contact.firstName') }} <span class="text-danger">*</span></label>
                                         <input type="text" 
                                                class="form-control @error('fname') is-invalid @enderror" 
                                                id="fname" 
@@ -120,7 +119,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="text-black" for="lname">Last name <span class="text-danger">*</span></label>
+                                        <label class="text-black" for="lname">{{ __('messages.contact.lastName') }} <span class="text-danger">*</span></label>
                                         <input type="text" 
                                                class="form-control @error('lname') is-invalid @enderror" 
                                                id="lname" 
@@ -136,7 +135,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="text-black" for="phone">Phone <span class="text-danger">*</span></label>
+                                        <label class="text-black" for="phone">{{ __('messages.contact.phone') }} <span class="text-danger">*</span></label>
                                         <input type="text" 
                                                class="form-control @error('phone') is-invalid @enderror" 
                                                id="phone" 
@@ -153,7 +152,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="text-black" for="email">Email address <span class="text-danger">*</span></label>
+                                <label class="text-black" for="email">{{ __('messages.contact.email') }} <span class="text-danger">*</span></label>
                                 <input type="email" 
                                        class="form-control @error('email') is-invalid @enderror" 
                                        id="email" 
@@ -168,14 +167,14 @@
                             </div>
 
                             <div class="form-group mb-5">
-                                <label class="text-black" for="message">Message <span class="text-danger">*</span></label>
+                                <label class="text-black" for="message">{{ __('messages.contact.message') }} <span class="text-danger">*</span></label>
                                 <textarea name="message" 
                                           class="form-control @error('message') is-invalid @enderror" 
                                           id="message" 
                                           cols="30" 
                                           rows="5"
                                           required>{{ old('message') }}</textarea>
-                                <small class="form-text text-muted">Minimum 10 characters required</small>
+                                <small class="form-text text-muted">{{ __('messages.contact.messagePlaceholder') }}</small>
                                 @error('message')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -183,7 +182,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+                            <button type="submit" class="btn btn-primary-hover-outline">{{ __('messages.contact.sendMessage') }}</button>
                         </form>
 
                     </div>

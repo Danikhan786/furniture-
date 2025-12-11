@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'user-access' => \App\Http\Middleware\UserAccess::class,
         ]);
+        
+        // Add LanguageManager middleware to web group
+        $middleware->web(append: [
+            \App\Http\Middleware\LanguageManager::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

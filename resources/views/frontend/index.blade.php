@@ -7,10 +7,10 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>Modern Interior <span class="d-block">Design Studio</span></h1>
-                        <p class="mb-4">Transform your living space with our premium collection of modern furniture. Discover elegant designs that combine style, comfort, and functionality for your home.</p>
-                        <p><a href="{{ route('shop') }}" class="btn btn-secondary me-2">Shop Now</a><a
-                                href="{{ route('about') }}" class="btn btn-white-outline">Explore</a></p>
+                        <h1>{{ __('messages.hero.title') }} <span class="d-block">{{ __('messages.hero.titleSpan') }}</span></h1>
+                        <p class="mb-4">{{ __('messages.hero.description') }}</p>
+                        <p><a href="{{ route('shop') }}" class="btn btn-secondary me-2">{{ __('messages.hero.shopNow') }}</a><a
+                                href="{{ route('about') }}" class="btn btn-white-outline">{{ __('messages.hero.explore') }}</a></p>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -28,8 +28,8 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6">
-                    <h2 class="section-title">Why Choose Us</h2>
-                    <p>We are committed to providing you with the finest quality furniture that enhances your home's beauty and comfort. Our carefully curated collection features pieces designed to last for generations.</p>
+                    <h2 class="section-title">{{ __('messages.whyChoose.title') }}</h2>
+                    <p>{{ __('messages.whyChoose.description') }}</p>
 
                     <div class="row my-5">
                         <div class="col-6 col-md-6">
@@ -37,8 +37,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/truck.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Fast &amp; Free Shipping</h3>
-                                <p>Enjoy free shipping on all orders over $500. We ensure safe and timely delivery to your doorstep.
+                                <h3>{{ __('messages.whyChoose.fastShipping') }}</h3>
+                                <p>{{ __('messages.whyChoose.fastShippingDesc') }}
                                 </p>
                             </div>
                         </div>
@@ -48,8 +48,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/bag.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Easy to Shop</h3>
-                                <p>Browse our extensive catalog with ease. Our user-friendly website makes finding your perfect furniture simple and enjoyable.
+                                <h3>{{ __('messages.whyChoose.easyShop') }}</h3>
+                                <p>{{ __('messages.whyChoose.easyShopDesc') }}
                                 </p>
                             </div>
                         </div>
@@ -59,8 +59,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/support.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>24/7 Support</h3>
-                                <p>Our dedicated customer service team is available around the clock to assist you with any questions or concerns.
+                                <h3>{{ __('messages.whyChoose.support') }}</h3>
+                                <p>{{ __('messages.whyChoose.supportDesc') }}
                                 </p>
                             </div>
                         </div>
@@ -70,8 +70,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/return.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Hassle Free Returns</h3>
-                                <p>Not satisfied? Return any item within 30 days for a full refund. We make returns easy and stress-free.
+                                <h3>{{ __('messages.whyChoose.returns') }}</h3>
+                                <p>{{ __('messages.whyChoose.returnsDesc') }}
                                 </p>
                             </div>
                         </div>
@@ -96,9 +96,9 @@
             <div class="row">
                 <!-- Start Column 1 -->
                 <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-                    <h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-                    <p class="mb-4">Each piece in our collection is meticulously crafted using premium materials and traditional techniques. We source only the finest wood, fabrics, and hardware to ensure durability and timeless elegance. </p>
-                    <p><a href="{{ route('shop') }}" class="btn">Explore</a></p>
+                    <h2 class="mb-4 section-title">{{ __('messages.product.title') }}</h2>
+                    <p class="mb-4">{{ __('messages.product.description') }} </p>
+                    <p><a href="{{ route('shop') }}" class="btn">{{ __('messages.hero.explore') }}</a></p>
                 </div>
                 <!-- End Column 1 -->
 
@@ -133,7 +133,7 @@
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                         <a class="product-item" href="#">
                             <img src="frontend/images/product-1.png" class="img-fluid product-thumbnail">
-                            <h3 class="product-title">No products available</h3>
+                            <h3 class="product-title">{{ __('messages.product.noProducts') }}</h3>
                             <strong class="product-price">$0.00</strong>
                             <span class="icon-cross">
                                 <img src="frontend/images/cross.svg" class="img-fluid">
@@ -159,16 +159,16 @@
                     </div>
                 </div>
                 <div class="col-lg-5 ps-lg-5">
-                    <h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
-                    <p>Our expert team is here to guide you in creating the perfect living space. From contemporary minimalism to classic elegance, we offer furniture solutions that reflect your personal style and enhance your home's ambiance.</p>
+                    <h2 class="section-title mb-4">{{ __('messages.weHelp.title') }}</h2>
+                    <p>{{ __('messages.weHelp.description') }}</p>
 
                     <ul class="list-unstyled custom-list my-4">
-                        <li>Expert design consultation services</li>
-                        <li>Wide selection of styles and finishes</li>
-                        <li>Customizable furniture options</li>
-                        <li>Professional assembly and installation</li>
+                        <li>{{ __('messages.weHelp.item1') }}</li>
+                        <li>{{ __('messages.weHelp.item2') }}</li>
+                        <li>{{ __('messages.weHelp.item3') }}</li>
+                        <li>{{ __('messages.weHelp.item4') }}</li>
                     </ul>
-                    <p><a href="{{ route('shop') }}" class="btn">Explore</a></p>
+                    <p><a href="{{ route('shop') }}" class="btn">{{ __('messages.hero.explore') }}</a></p>
                 </div>
             </div>
         </div>
@@ -186,9 +186,9 @@
                             <img src="frontend/images/product-1.png" alt="Image" class="img-fluid">
                         </div>
                         <div class="pt-3">
-                            <h3>Nordic Chair</h3>
-                            <p>Experience ultimate comfort with our Nordic-inspired chair, featuring ergonomic design and premium materials. </p>
-                            <p><a href="#">Read More</a></p>
+                            <h3>{{ __('messages.popular.nordicTitle') }}</h3>
+                            <p>{{ __('messages.popular.nordicDesc') }} </p>
+                            <p><a href="#">{{ __('messages.popular.readMore') }}</a></p>
                         </div>
                     </div>
                 </div>
@@ -199,9 +199,9 @@
                             <img src="frontend/images/product-2.png" alt="Image" class="img-fluid">
                         </div>
                         <div class="pt-3">
-                            <h3>Kruzo Aero Chair</h3>
-                            <p>Modern design meets exceptional comfort in this sleek, contemporary chair perfect for any workspace. </p>
-                            <p><a href="#">Read More</a></p>
+                            <h3>{{ __('messages.popular.kruzoTitle') }}</h3>
+                            <p>{{ __('messages.popular.kruzoDesc') }} </p>
+                            <p><a href="#">{{ __('messages.popular.readMore') }}</a></p>
                         </div>
                     </div>
                 </div>
@@ -212,9 +212,9 @@
                             <img src="frontend/images/product-3.png" alt="Image" class="img-fluid">
                         </div>
                         <div class="pt-3">
-                            <h3>Ergonomic Chair</h3>
-                            <p>Designed for long hours of comfort, our ergonomic chair supports your posture while adding style to your space. </p>
-                            <p><a href="#">Read More</a></p>
+                            <h3>{{ __('messages.popular.ergonomicTitle') }}</h3>
+                            <p>{{ __('messages.popular.ergonomicDesc') }} </p>
+                            <p><a href="#">{{ __('messages.popular.readMore') }}</a></p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +229,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto text-center">
-                    <h2 class="section-title">Testimonials</h2>
+                    <h2 class="section-title">{{ __('messages.testimonials.title') }}</h2>
                 </div>
             </div>
 
@@ -250,7 +250,7 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
@@ -258,8 +258,8 @@
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones"
                                                         class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
@@ -274,7 +274,7 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
@@ -282,8 +282,8 @@
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones"
                                                         class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
@@ -298,7 +298,7 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
@@ -306,8 +306,8 @@
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones"
                                                         class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 

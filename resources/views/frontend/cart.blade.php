@@ -7,7 +7,7 @@
 					<div class="row justify-content-between">
 							<div class="col-lg-12	">
 									<div class="text-center">
-											<h1>Cart</h1>
+											<h1>{{ __('messages.cart.title') }}</h1>
 									</div>
 							</div>
 					</div>
@@ -41,12 +41,12 @@
 													<table class="table">
 															<thead>
 																	<tr>
-																			<th class="product-thumbnail">Image</th>
-																			<th class="product-name">Product</th>
-																			<th class="product-price">Price</th>
-																			<th class="product-quantity">Quantity</th>
-																			<th class="product-total">Total</th>
-																			<th class="product-remove">Remove</th>
+																			<th class="product-thumbnail">{{ __('messages.cart.image') }}</th>
+																			<th class="product-name">{{ __('messages.cart.product') }}</th>
+																			<th class="product-price">{{ __('messages.cart.price') }}</th>
+																			<th class="product-quantity">{{ __('messages.cart.quantity') }}</th>
+																			<th class="product-total">{{ __('messages.cart.total') }}</th>
+																			<th class="product-remove">{{ __('messages.cart.remove') }}</th>
 																	</tr>
 															</thead>
 															<tbody>
@@ -65,7 +65,7 @@
 																											<a href="{{ route('productDetail', $item->product->slug) }}">{{ $item->product->name }}</a>
 																									</h2>
 																							@else
-																									<h2 class="h5 text-black">Product Not Available</h2>
+																									<h2 class="h5 text-black">{{ __('messages.cart.productNotAvailable') }}</h2>
 																							@endif
 																					</td>
 																					<td class="product-price">${{ number_format($item->price, 2) }}</td>
@@ -90,7 +90,7 @@
 																					</td>
 																					<td class="product-total" id="item-total-{{ $item->id }}" data-price="{{ $item->price }}">${{ number_format($item->price * $item->quantity, 2) }}</td>
 																					<td>
-																							<a href="{{ route('cart.remove', $item->id) }}" class="btn btn-black btn-sm" onclick="return confirm('Are you sure you want to remove this item?')">X</a>
+																							<a href="{{ route('cart.remove', $item->id) }}" class="btn btn-black btn-sm" onclick="return confirm('{{ __('messages.cart.removeConfirm') }}')">X</a>
 																					</td>
 																			</tr>
 																	@endforeach
@@ -104,10 +104,10 @@
 									<div class="col-md-6">
 											<div class="row mb-5">
 													<div class="col-md-6 mb-3 mb-md-0">
-															<button type="submit" class="btn btn-black btn-sm btn-block">Update Cart</button>
+															<button type="submit" class="btn btn-black btn-sm btn-block">{{ __('messages.cart.updateCart') }}</button>
 													</div>
 													<div class="col-md-6">
-															<a href="{{ route('shop') }}" class="btn btn-outline-black btn-sm btn-block">Continue Shopping</a>
+															<a href="{{ route('shop') }}" class="btn btn-outline-black btn-sm btn-block">{{ __('messages.cart.continueShopping') }}</a>
 													</div>
 											</div>
 									</div>
@@ -116,12 +116,12 @@
 													<div class="col-md-7">
 															<div class="row">
 																	<div class="col-md-12 text-right border-bottom mb-5">
-																			<h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+																			<h3 class="text-black h4 text-uppercase">{{ __('messages.cart.cartTotals') }}</h3>
 																	</div>
 															</div>
 															<div class="row mb-3">
 																	<div class="col-md-6">
-																			<span class="text-black">Subtotal</span>
+																			<span class="text-black">{{ __('messages.cart.subtotal') }}</span>
 																	</div>
 																	<div class="col-md-6 text-right">
 																			<strong class="text-black" id="cart-subtotal">${{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
@@ -129,7 +129,7 @@
 															</div>
 															<div class="row mb-5">
 																	<div class="col-md-6">
-																			<span class="text-black">Total</span>
+																			<span class="text-black">{{ __('messages.cart.total') }}</span>
 																	</div>
 																	<div class="col-md-6 text-right">
 																			<strong class="text-black" id="cart-total">${{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
@@ -138,7 +138,7 @@
 
 															<div class="row">
 																	<div class="col-md-12">
-																			<a href="{{ route('checkout') }}" class="btn btn-black btn-sm py-3 btn-block">Proceed To Checkout</a>
+																			<a href="{{ route('checkout') }}" class="btn btn-black btn-sm py-3 btn-block">{{ __('messages.cart.proceedToCheckout') }}</a>
 																	</div>
 															</div>
 													</div>
@@ -149,9 +149,9 @@
 					@else
 						<div class="row">
 								<div class="col-12 text-center py-5">
-										<h3 class="text-muted">Your cart is empty</h3>
-										<p class="text-muted">Add some products to your cart to continue shopping.</p>
-										<a href="{{ route('shop') }}" class="btn btn-primary mt-3">Continue Shopping</a>
+										<h3 class="text-muted">{{ __('messages.cart.empty') }}</h3>
+										<p class="text-muted">{{ __('messages.cart.emptyDesc') }}</p>
+										<a href="{{ route('shop') }}" class="btn btn-primary mt-3">{{ __('messages.cart.continueShopping') }}</a>
 								</div>
 						</div>
 					@endif

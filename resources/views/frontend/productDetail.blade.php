@@ -61,7 +61,7 @@
 
                         @if ($product->category)
                             <p class="text-muted mb-3">
-                                <span>Category: </span>
+                                <span>{{ __('messages.productDetail.category') }} </span>
                                 <a href="{{ route('shop') }}" class="text-primary">{{ $product->category->name }}</a>
                             </p>
                         @endif
@@ -93,11 +93,11 @@
                         <div class="mb-4">
                             @if ($product->stock > 0)
                                 <p class="text-success mb-2">
-                                    <i class="fa fa-check-circle"></i> In Stock ({{ $product->stock }} available)
+                                    <i class="fa fa-check-circle"></i> {{ __('messages.productDetail.inStock') }} ({{ $product->stock }} {{ __('messages.productDetail.available') }})
                                 </p>
                             @else
                                 <p class="text-danger mb-2">
-                                    <i class="fa fa-times-circle"></i> Out of Stock
+                                    <i class="fa fa-times-circle"></i> {{ __('messages.productDetail.outOfStock') }}
                                 </p>
                             @endif
                         </div>
@@ -105,7 +105,7 @@
                         <!-- SKU -->
                         @if ($product->sku)
                             <p class="text-muted mb-4">
-                                <small>SKU: {{ $product->sku }}</small>
+                                <small>{{ __('messages.productDetail.sku') }} {{ $product->sku }}</small>
                             </p>
                         @endif
 
@@ -118,12 +118,12 @@
                                     <input type="hidden" name="quantity" value="1">
                                     <button type="submit" class="btn btn-primary btn-md"
                                         {{ $product->stock <= 0 ? 'disabled' : '' }}>
-                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                        <i class="fa fa-shopping-cart"></i> {{ __('messages.productDetail.addToCart') }}
                                     </button>
                                 </form>
                                 <a href="https://wa.me/33621792848?text={{ urlencode('Check out this product: ' . $product->name . ' - ' . route('productDetail', $product->slug)) }}"
                                     target="_blank" class="btn btn-success btn-md">
-                                    <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                                    <i class="fa-brands fa-whatsapp"></i> {{ __('messages.productDetail.shareWhatsApp') }}
                                 </a>
                             </div>
                         </div>
@@ -146,13 +146,13 @@
                             <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
                                 data-bs-target="#description" type="button" role="tab" aria-controls="description"
                                 aria-selected="true">
-                                <i class="fa fa-file-text me-2"></i> Description
+                                <i class="fa fa-file-text me-2"></i> {{ __('messages.productDetail.description') }}
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
                                 type="button" role="tab" aria-controls="reviews" aria-selected="false">
-                                <i class="fa fa-star me-2"></i> Reviews
+                                <i class="fa fa-star me-2"></i> {{ __('messages.productDetail.reviews') }}
                             </button>
                         </li>
                     </ul>
@@ -167,7 +167,7 @@
                                         {!! nl2br(e($product->long_description)) !!}
                                     </div>
                                 @else
-                                    <p class="text-muted">No detailed description available for this product.</p>
+                                    <p class="text-muted">{{ __('messages.productDetail.noDescription') }}</p>
                                 @endif
                             </div>
                         </div>
@@ -214,8 +214,8 @@
                                                         @endif
                                                     @endfor
                                                 </div>
-                                                <p class="text-muted mb-0">Based on {{ $reviewsCount }}
-                                                    {{ Str::plural('review', $reviewsCount) }}</p>
+                                                <p class="text-muted mb-0">{{ __('messages.productDetail.basedOn') }} {{ $reviewsCount }}
+                                                    {{ $reviewsCount == 1 ? __('messages.productDetail.review') : __('messages.productDetail.reviewsPlural') }}</p>
                                             </div>
                                             <div class="col-md-8">
                                                 @for ($rating = 5; $rating >= 1; $rating--)
@@ -242,7 +242,7 @@
 
                                 <!-- Individual Reviews -->
                                 <div class="reviews-list mb-5">
-                                    <h5 class="mb-4">Customer Reviews ({{ $reviewsCount }})</h5>
+                                    <h5 class="mb-4">{{ __('messages.productDetail.customerReviews') }} ({{ $reviewsCount }})</h5>
 
                                     @if ($approvedReviews->count() > 0)
                                         @foreach ($approvedReviews as $review)
@@ -271,14 +271,14 @@
                                         @endforeach
                                     @else
                                         <div class="text-center py-4">
-                                            <p class="text-muted">No reviews yet. Be the first to review this product!</p>
+                                            <p class="text-muted">{{ __('messages.productDetail.noReviews') }}</p>
                                         </div>
                                     @endif
                                 </div>
 
                                 <!-- Write Review Section -->
                                 <div class="write-review-section mt-5 pt-4 border-top">
-                                    <h5 class="mb-3">Write a Review</h5>
+                                    <h5 class="mb-3">{{ __('messages.productDetail.writeReview') }}</h5>
                                     <form method="POST" action="{{ route('reviews.store') }}">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -294,7 +294,7 @@
                                         @endif
 
                                         <div class="mb-3">
-                                            <label class="form-label">Your Rating <span
+                                            <label class="form-label">{{ __('messages.productDetail.yourRating') }} <span
                                                     class="text-danger">*</span></label>
                                             <div class="rating-input">
                                                 @for ($i = 1; $i <= 5; $i++)
@@ -312,7 +312,7 @@
 
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label for="reviewName" class="form-label">Your Name <span
+                                                <label for="reviewName" class="form-label">{{ __('messages.productDetail.yourName') }} <span
                                                         class="text-danger">*</span></label>
                                                 <input type="text"
                                                     class="form-control @error('name') is-invalid @enderror"
@@ -324,7 +324,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="reviewEmail" class="form-label">Your Email</label>
+                                                <label for="reviewEmail" class="form-label">{{ __('messages.productDetail.yourEmail') }}</label>
                                                 <input type="email"
                                                     class="form-control @error('email') is-invalid @enderror"
                                                     id="reviewEmail" name="email" value="{{ old('email') }}">
@@ -337,11 +337,11 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="reviewTitle" class="form-label">Review Title</label>
+                                            <label for="reviewTitle" class="form-label">{{ __('messages.productDetail.reviewTitle') }}</label>
                                             <input type="text"
                                                 class="form-control @error('title') is-invalid @enderror" id="reviewTitle"
                                                 name="title" value="{{ old('title') }}"
-                                                placeholder="Enter a title for your review">
+                                                placeholder="{{ __('messages.productDetail.reviewTitlePlaceholder') }}">
                                             @error('title')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -349,18 +349,18 @@
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="reviewText" class="form-label">Your Review <span
+                                            <label for="reviewText" class="form-label">{{ __('messages.productDetail.yourReview') }} <span
                                                     class="text-danger">*</span></label>
                                             <textarea class="form-control @error('comment') is-invalid @enderror" id="reviewText" name="comment" rows="5"
-                                                placeholder="Share your experience with this product..." required>{{ old('comment') }}</textarea>
-                                            <small class="form-text text-muted">Minimum 10 characters required</small>
+                                                placeholder="{{ __('messages.productDetail.reviewPlaceholder') }}" required>{{ old('comment') }}</textarea>
+                                            <small class="form-text text-muted">{{ __('messages.productDetail.minChars') }}</small>
                                             @error('comment')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('messages.productDetail.submitReview') }}</button>
                                     </form>
                                 </div>
                             </div>
@@ -378,7 +378,7 @@
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-12 text-center">
-                        <h2 class="section-title">Related Products</h2>
+                        <h2 class="section-title">{{ __('messages.productDetail.relatedProducts') }}</h2>
                     </div>
                 </div>
                 <div class="row">

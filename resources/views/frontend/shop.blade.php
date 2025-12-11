@@ -7,8 +7,8 @@
             <div class="row justify-content-between">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <h1>Shop</h1>
-                        <p class="mb-4">Browse our collection of premium furniture</p>
+                        <h1>{{ __('messages.shop.title') }}</h1>
+                        <p class="mb-4">{{ __('messages.shop.description') }}</p>
                     </div>
                 </div>
             </div>
@@ -24,14 +24,14 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title mb-4">
-                                <i class="fa fa-filter me-2"></i>Filters
+                                <i class="fa fa-filter me-2"></i>{{ __('messages.shop.filters') }}
                             </h5>
                             
                             <!-- Filter Form -->
                             <form action="{{ route('shop') }}" method="GET" id="filterForm">
                                 <!-- Category Filter -->
                                 <div class="mb-4">
-                                    <h6 class="mb-3">Categories</h6>
+                                    <h6 class="mb-3">{{ __('messages.shop.categories') }}</h6>
                                     @foreach($parentCategories ?? [] as $category)
                                         <div class="form-check mb-2">
                                             <input class="form-check-input" type="checkbox" name="categories[]" id="category_{{ $category->id }}" 
@@ -59,10 +59,10 @@
 
                                 <!-- Price Filter -->
                                 <div class="mb-4">
-                                    <h6 class="mb-3">Price Range</h6>
+                                    <h6 class="mb-3">{{ __('messages.shop.priceRange') }}</h6>
                                     <div class="row g-2">
                                         <div class="col-6">
-                                            <label for="min_price" class="form-label small">Min Price ($)</label>
+                                            <label for="min_price" class="form-label small">{{ __('messages.shop.minPrice') }}</label>
                                             <input type="number" 
                                                    class="form-control form-control-sm" 
                                                    id="min_price" 
@@ -73,7 +73,7 @@
                                                    value="{{ request('min_price') }}">
                                         </div>
                                         <div class="col-6">
-                                            <label for="max_price" class="form-label small">Max Price ($)</label>
+                                            <label for="max_price" class="form-label small">{{ __('messages.shop.maxPrice') }}</label>
                                             <input type="number" 
                                                    class="form-control form-control-sm" 
                                                    id="max_price" 
@@ -89,11 +89,11 @@
                                 <!-- Filter Buttons -->
                                 <div class="d-grid gap-2">
                                     <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-search me-1"></i>Apply Filters
+                                        <i class="fa fa-search me-1"></i>{{ __('messages.shop.applyFilters') }}
                                     </button>
                                     @if(request('categories') || request('min_price') || request('max_price'))
                                         <a href="{{ route('shop') }}" class="btn btn-outline-secondary btn-sm">
-                                            <i class="fa fa-times me-1"></i>Clear Filters
+                                            <i class="fa fa-times me-1"></i>{{ __('messages.shop.clearFilters') }}
                                         </a>
                                     @endif
                                 </div>
@@ -109,14 +109,14 @@
                         @if(request('categories') || request('min_price') || request('max_price'))
                             <div class="alert alert-info mb-4">
                                 <i class="fa fa-info-circle me-2"></i>
-                                Showing {{ $products->total() }} {{ Str::plural('result', $products->total()) }}
+                                {{ __('messages.shop.showingResults') }} {{ $products->total() }} {{ $products->total() == 1 ? __('messages.shop.result') : __('messages.shop.results') }}
                                 @if(request('categories'))
                                     @php
                                         $selectedCategoryIds = (array)request('categories', []);
                                         $selectedCategoryNames = $categories->whereIn('id', $selectedCategoryIds)->pluck('name')->toArray();
                                     @endphp
                                     @if(count($selectedCategoryNames) > 0)
-                                        in 
+                                        {{ __('messages.shop.in') }} 
                                         @foreach($selectedCategoryNames as $index => $name)
                                             <strong>{{ $name }}</strong>@if($index < count($selectedCategoryNames) - 1), @endif
                                         @endforeach
@@ -165,13 +165,13 @@
                     @else
                         <div class="row">
                             <div class="col-12 text-center py-5">
-                                <h3 class="text-muted">No products found</h3>
+                                <h3 class="text-muted">{{ __('messages.shop.noProductsFound') }}</h3>
                                 <p class="text-muted">
                                     @if(request('categories') || request('min_price') || request('max_price'))
-                                        Try adjusting your filters or 
-                                        <a href="{{ route('shop') }}">view all products</a>
+                                        {{ __('messages.shop.tryAdjusting') }} 
+                                        <a href="{{ route('shop') }}">{{ __('messages.shop.viewAllProducts') }}</a>
                                     @else
-                                        Check back later for new arrivals!
+                                        {{ __('messages.shop.checkBackLater') }}
                                     @endif
                                 </p>
                             </div>

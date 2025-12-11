@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
@@ -19,7 +19,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Oasis Meubles</title>
+    <style>
+        .language-switcher {
+            cursor: pointer;
+        }
+        .dropdown-item.active {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        .dropdown-item:hover {
+            background-color: #e9ecef;
+        }
+        #languageDropdown {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        #languageDropdown:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    </style>
+    <title>@yield('title', 'Oasis Meubles - Premium Furniture Store | Modern Interior Design')</title>
 </head>
 
 <body>
@@ -44,24 +62,44 @@
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                     <li class="nav-item {{ request()->routeIs('index') ? 'active' : '' }}">
                         <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}"
-                            href="{{ route('index') }}">Home</a>
+                            href="{{ route('index') }}">{{ __('messages.nav.home') }}</a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}">
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
-                            href="{{ route('about') }}">About us</a>
+                            href="{{ route('about') }}">{{ __('messages.nav.about') }}</a>
                     </li>
                     <li
                         class="nav-item {{ request()->routeIs('shop') || request()->routeIs('productDetail') ? 'active' : '' }}">
                         <a class="nav-link {{ request()->routeIs('shop') || request()->routeIs('productDetail') ? 'active' : '' }}"
-                            href="{{ route('shop') }}">Shop</a>
+                            href="{{ route('shop') }}">{{ __('messages.nav.shop') }}</a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
-                            href="{{ route('contact') }}">Contact us</a>
+                            href="{{ route('contact') }}">{{ __('messages.nav.contact') }}</a>
                     </li>
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0.5rem 1rem;">
+                            <i class="fa fa-globe"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <a class="dropdown-item {{ session()->get('locale') == 'en' ? 'active' : '' }}" 
+                                   href="{{ route('changeLang') }}?lang=en">
+                                    <span class="me-2">🇬🇧</span> English
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" 
+                                   href="{{ route('changeLang') }}?lang=fr">
+                                    <span class="me-2">🇫🇷</span> Français
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link position-relative" href="{{ route('cart') }}" style="padding: 0.5rem 1rem;">
                             <img src="../../frontend/images/cart.svg" alt="Cart">
@@ -89,13 +127,13 @@
                                 @if (Auth::user()->type == 'admin')
                                     <li>
                                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                            <i class="fa fa-tachometer-alt me-2"></i> Admin Dashboard
+                                            <i class="fa fa-tachometer-alt me-2"></i> {{ __('messages.user.adminDashboard') }}
                                         </a>
                                     </li>
                                 @else
                                     <li>
                                         <a class="dropdown-item" href="{{ route('home') }}">
-                                            <i class="fa fa-home me-2"></i> Home Dashboard
+                                            <i class="fa fa-home me-2"></i> {{ __('messages.user.homeDashboard') }}
                                         </a>
                                     </li>
                                 @endif
@@ -106,7 +144,7 @@
                                     <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                         @csrf
                                         <button type="submit" class="dropdown-item">
-                                            <i class="fa fa-sign-out-alt me-2"></i> Logout
+                                            <i class="fa fa-sign-out-alt me-2"></i> {{ __('messages.user.logout') }}
                                         </button>
                                     </form>
                                 </li>
@@ -159,17 +197,17 @@
                     <div class="row links-wrap">
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="{{ route('index') }}">Home</a></li>
-                                <li><a href="{{ route('about') }}">About us</a></li>
-                                <li><a href="{{ route('shop') }}">shop</a></li>
+                                <li><a href="{{ route('index') }}">{{ __('messages.footer.home') }}</a></li>
+                                <li><a href="{{ route('about') }}">{{ __('messages.footer.about') }}</a></li>
+                                <li><a href="{{ route('shop') }}">{{ __('messages.footer.shop') }}</a></li>
                             </ul>
                         </div>
                         
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="{{ route('contact') }}">Contact us</a></li>
-                                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
-                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('contact') }}">{{ __('messages.footer.contact') }}</a></li>
+                                <li><a href="{{ route('terms') }}">{{ __('messages.footer.terms') }}</a></li>
+                                <li><a href="{{ route('privacy') }}">{{ __('messages.footer.privacy') }}</a></li>
                             </ul>
                         </div>    
                     </div>
@@ -183,7 +221,7 @@
                         <p class="mb-2 text-center text-lg-start">Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script>. All Rights Reserved.</a>
+                            </script>. {{ __('messages.footer.copyright') }}</a>
                             <!-- License information: https://untree.co/license/ -->
                         </p>
                     </div>

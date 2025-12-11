@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CouponController as BackendCouponController;
 use App\Http\Controllers\Backend\ReviewController as BackendReviewController;
 use App\Http\Controllers\Backend\ContactController as BackendContactController;
 use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
+use App\Http\Controllers\LanguageController;
 
 
 // Route::get('/', function () {
@@ -21,6 +22,9 @@ use App\Http\Controllers\Backend\CustomerController as BackendCustomerController
 // });
 
 Auth::routes();
+
+// Language switching route
+Route::get('/lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
 
  Route::get('/', [FrontendController::class, 'index'])->name('index');

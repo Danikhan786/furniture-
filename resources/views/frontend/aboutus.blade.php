@@ -7,8 +7,8 @@
                 <div class="row justify-content-between">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <h1>About Us</h1>
-                            <p class="mb-4">Welcome to our furniture store, where quality craftsmanship meets modern design. We've been dedicated to helping you create beautiful, comfortable living spaces for over a decade.</p>
+                            <h1>{{ __('messages.about.title') }}</h1>
+                            <p class="mb-4">{{ __('messages.about.description') }}</p>
                         </div>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="section-title">Why Choose Us</h2>
-                    <p>With years of experience in the furniture industry, we pride ourselves on offering exceptional quality, outstanding customer service, and designs that stand the test of time. Your satisfaction is our top priority.</p>
+                    <h2 class="section-title">{{ __('messages.whyChoose.title') }}</h2>
+                    <p>{{ __('messages.about.whyChooseDesc') }}</p>
 
                     <div class="row my-5">
                         <div class="col-6 col-md-6">
@@ -32,8 +32,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/truck.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Fast &amp; Free Shipping</h3>
-                                <p>Enjoy free shipping on all orders over $500. We ensure safe and timely delivery to your doorstep.</p>
+                                <h3>{{ __('messages.whyChoose.fastShipping') }}</h3>
+                                <p>{{ __('messages.whyChoose.fastShippingDesc') }}</p>
                             </div>
                         </div>
 
@@ -42,8 +42,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/bag.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Easy to Shop</h3>
-                                <p>Browse our extensive catalog with ease. Our user-friendly website makes finding your perfect furniture simple and enjoyable.</p>
+                                <h3>{{ __('messages.whyChoose.easyShop') }}</h3>
+                                <p>{{ __('messages.whyChoose.easyShopDesc') }}</p>
                             </div>
                         </div>
 
@@ -52,8 +52,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/support.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>24/7 Support</h3>
-                                <p>Our dedicated customer service team is available around the clock to assist you with any questions or concerns.</p>
+                                <h3>{{ __('messages.whyChoose.support') }}</h3>
+                                <p>{{ __('messages.whyChoose.supportDesc') }}</p>
                             </div>
                         </div>
 
@@ -62,8 +62,8 @@
                                 <div class="icon">
                                     <img src="frontend/images/return.svg" alt="Image" class="img-fluid">
                                 </div>
-                                <h3>Hassle Free Returns</h3>
-                                <p>Not satisfied? Return any item within 30 days for a full refund. We make returns easy and stress-free.</p>
+                                <h3>{{ __('messages.whyChoose.returns') }}</h3>
+                                <p>{{ __('messages.whyChoose.returnsDesc') }}</p>
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto text-center">
-                    <h2 class="section-title">Testimonials</h2>
+                    <h2 class="section-title">{{ __('messages.testimonials.title') }}</h2>
                 </div>
             </div>
 
@@ -109,15 +109,15 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
                                                 <div class="author-pic">
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
@@ -132,15 +132,15 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
                                                 <div class="author-pic">
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
@@ -155,15 +155,15 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
                                                 <div class="author-pic">
                                                     <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
                                                 </div>
-                                                <h3 class="font-weight-bold">Sarah Johnson</h3>
-                                                <span class="position d-block mb-3">Homeowner, New York</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
+                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
