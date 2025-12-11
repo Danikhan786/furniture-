@@ -85,17 +85,26 @@
                             data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0.5rem 1rem;">
                             <i class="fa fa-globe"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropdown">
+                            <li class="dropdown-header">Language</li>
                             <li>
-                                <a class="dropdown-item {{ session()->get('locale') == 'en' ? 'active' : '' }}" 
+                                <a class="dropdown-item language-option {{ session()->get('locale') == 'en' ? 'active' : '' }}" 
                                    href="{{ route('changeLang') }}?lang=en">
-                                    <span class="me-2">🇬🇧</span> English
+                                    <span class="country-code">GB</span>
+                                    <span class="language-name">English</span>
+                                    @if(session()->get('locale') == 'en')
+                                        <span class="active-badge">Active</span>
+                                    @endif
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" 
+                                <a class="dropdown-item language-option {{ session()->get('locale') == 'fr' ? 'active' : '' }}" 
                                    href="{{ route('changeLang') }}?lang=fr">
-                                    <span class="me-2">🇫🇷</span> Français
+                                    <span class="country-code">FR</span>
+                                    <span class="language-name">Français</span>
+                                    @if(session()->get('locale') == 'fr')
+                                        <span class="active-badge">Active</span>
+                                    @endif
                                 </a>
                             </li>
                         </ul>

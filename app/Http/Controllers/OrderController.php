@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\User;
 use App\Mail\NewOrderNotification;
+use App\Mail\CustomerOrderConfirmation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -172,6 +173,13 @@ class OrderController extends Controller
                 \Log::error('Failed to send order notification email: ' . $e->getMessage());
             }
 
+            // Send order confirmation to customer
+            try {
+                Mail::to($order->email)->send(new CustomerOrderConfirmation($order));
+            } catch (\Exception $e) {
+                \Log::error('Failed to send customer order confirmation: ' . $e->getMessage());
+            }
+
             // Redirect to thank you page with order number
             return redirect()->route('thankyou')->with('order_number', $order->order_number);
 
@@ -183,5 +191,35 @@ class OrderController extends Controller
                 ->withInput()
                 ->with('error', 'An error occurred while processing your order. Please try again.');
         }
+    }
+
+    /**
+     * Show public order lookup form.
+     */
+    public function showLookupForm()
+    {
+        return view('frontend.order_lookup', ['order' => null]);
+    }
+
+    /**
+     * Handle public order lookup.
+     */
+    public function lookup(Request $request)
+    {
+        $validated = $request->validate([
+            'order_number' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $order = Order::with('items.product')
+            ->where('order_number', $validated['order_number'])
+            ->where('email', $validated['email'])
+            ->first();
+
+        if (!$order) {
+            return redirect()->back()->withInput()->with('error', 'Order not found. Please check the order number and email.');
+        }
+
+        return view('frontend.order_lookup', ['order' => $order]);
     }
 }

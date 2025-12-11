@@ -26,6 +26,10 @@ Auth::routes();
 // Language switching route
 Route::get('/lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
+// Public order lookup
+Route::get('/order/lookup', [OrderController::class, 'showLookupForm'])->name('order.lookup');
+Route::post('/order/lookup', [OrderController::class, 'lookup'])->name('order.lookup.submit');
+
 
  Route::get('/', [FrontendController::class, 'index'])->name('index');
  Route::get('/about-us', [FrontendController::class, 'about'])->name('about');

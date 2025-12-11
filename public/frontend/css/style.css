@@ -1087,3 +1087,79 @@ textarea {
         max-height: 70px !important;
     }
 }
+
+/* Language Dropdown Styles */
+.language-dropdown {
+    min-width: 200px;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.language-dropdown .dropdown-header {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6a6a6a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 0.25rem;
+}
+
+.language-dropdown .language-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #2f2f2f;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.language-dropdown .language-option:hover {
+    background-color: #f8f9fa;
+    color: #2f2f2f;
+}
+
+.language-dropdown .language-option.active {
+    background-color: #f8f9fa;
+}
+
+.language-dropdown .country-code {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #adb5bd;
+    margin-right: 0.75rem;
+    min-width: 28px;
+    text-align: left;
+}
+
+.language-dropdown .language-option.active .country-code {
+    color: #6a6a6a;
+}
+
+.language-dropdown .language-name {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #2f2f2f;
+}
+
+.language-dropdown .active-badge {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-left: auto;
+}
+
+.language-dropdown .language-option:hover .active-badge {
+    background-color: #0056b3;
+}
