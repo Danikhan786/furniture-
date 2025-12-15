@@ -2,6 +2,14 @@
   .hero .hero-img-wrap img {
     max-width: 443px;
   }
+
+  .hero .hero-img-wrap:after{
+    width: 155px;
+    right: 0px;
+  }
+  .footer-section .sofa-img img {
+    max-width: 330px;
+  }
 }
 
 
