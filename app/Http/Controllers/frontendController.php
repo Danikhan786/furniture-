@@ -17,7 +17,7 @@ class frontendController extends Controller
         $products = Product::with(['category', 'images'])
             ->where('status', 'active')
             ->latest()
-            ->limit(8)
+            ->limit(11)
             ->get();
         
         return view('frontend.index', compact('products'));

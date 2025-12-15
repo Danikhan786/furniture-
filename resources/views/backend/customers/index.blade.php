@@ -70,7 +70,7 @@
                                                 <span class="badge badge-info">{{ $customer->orders_count ?? 0 }}</span>
                                             </td>
                                             <td>
-                                                <strong>${{ number_format($customer->total_spent ?? 0, 2) }}</strong>
+                                                <strong>€{{ number_format($customer->total_spent ?? 0, 2) }}</strong>
                                             </td>
                                             <td>
                                                 @if($customer->last_order)

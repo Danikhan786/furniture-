@@ -119,12 +119,12 @@
                                             <td>
                                                 @if($product->discount_price)
                                                     <div>
-                                                        <span class="text-decoration-line-through text-muted">${{ number_format($product->price, 2) }}</span>
+                                                        <span class="text-decoration-line-through text-muted">€{{ number_format($product->price, 2) }}</span>
                                                         <br>
-                                                        <strong class="text-danger">${{ number_format($product->discount_price, 2) }}</strong>
+                                                        <strong class="text-danger">€{{ number_format($product->discount_price, 2) }}</strong>
                                                     </div>
                                                 @else
-                                                    <strong>${{ number_format($product->price, 2) }}</strong>
+                                                    <strong>€{{ number_format($product->price, 2) }}</strong>
                                                 @endif
                                             </td>
                                             <td>

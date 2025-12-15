@@ -68,7 +68,7 @@
 																									<h2 class="h5 text-black">{{ __('messages.cart.productNotAvailable') }}</h2>
 																							@endif
 																					</td>
-																					<td class="product-price">${{ number_format($item->price, 2) }}</td>
+																					<td class="product-price">€{{ number_format($item->price, 2) }}</td>
 																					<td>
 																							<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
 																									<div class="input-group-prepend">
@@ -88,7 +88,7 @@
 																									</div>
 																							</div>
 																					</td>
-																					<td class="product-total" id="item-total-{{ $item->id }}" data-price="{{ $item->price }}">${{ number_format($item->price * $item->quantity, 2) }}</td>
+																					<td class="product-total" id="item-total-{{ $item->id }}" data-price="{{ $item->price }}">€{{ number_format($item->price * $item->quantity, 2) }}</td>
 																					<td>
 																							<a href="{{ route('cart.remove', $item->id) }}" class="btn btn-black btn-sm" onclick="return confirm('{{ __('messages.cart.removeConfirm') }}')">X</a>
 																					</td>
@@ -124,7 +124,7 @@
 																			<span class="text-black">{{ __('messages.cart.subtotal') }}</span>
 																	</div>
 																	<div class="col-md-6 text-right">
-																			<strong class="text-black" id="cart-subtotal">${{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
+																			<strong class="text-black" id="cart-subtotal">€{{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
 																	</div>
 															</div>
 															<div class="row mb-5">
@@ -132,7 +132,7 @@
 																			<span class="text-black">{{ __('messages.cart.total') }}</span>
 																	</div>
 																	<div class="col-md-6 text-right">
-																			<strong class="text-black" id="cart-total">${{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
+																			<strong class="text-black" id="cart-total">€{{ number_format($cartItems->sum(function($item) { return $item->price * $item->quantity; }), 2) }}</strong>
 																	</div>
 															</div>
 

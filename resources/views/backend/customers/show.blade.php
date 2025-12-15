@@ -95,7 +95,7 @@
                                             <tr>
                                                 <th>Total Spent:</th>
                                                 <td>
-                                                    <strong class="text-primary">${{ number_format($totalSpent, 2) }}</strong>
+                                                    <strong class="text-primary">€{{ number_format($totalSpent, 2) }}</strong>
                                                 </td>
                                             </tr>
                                         </table>
@@ -132,7 +132,7 @@
                                                         </td>
                                                         <td>{{ $order->created_at->format('M d, Y h:i A') }}</td>
                                                         <td>{{ $order->items->count() }} item(s)</td>
-                                                        <td><strong>${{ number_format($order->total, 2) }}</strong></td>
+                                                        <td><strong>€{{ number_format($order->total, 2) }}</strong></td>
                                                         <td>
                                                             @if($order->status == 'pending')
                                                                 <span class="badge badge-warning">Pending</span>

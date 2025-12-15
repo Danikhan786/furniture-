@@ -119,7 +119,7 @@
                                                 <span class="badge badge-info">{{ $order->items->sum('quantity') }} items</span>
                                             </td>
                                             <td>
-                                                <strong>${{ number_format($order->total, 2) }}</strong>
+                                                <strong>€{{ number_format($order->total, 2) }}</strong>
                                             </td>
                                             <td>
                                                 @if($order->status == 'pending')

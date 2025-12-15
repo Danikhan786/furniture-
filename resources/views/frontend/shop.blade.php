@@ -137,10 +137,10 @@
                                         <h3 class="product-title">{{ $product->name }}</h3>
                                         <strong class="product-price">
                                             @if($product->discount_price)
-                                                <span class="text-danger">${{ number_format($product->discount_price, 2) }}</span>
-                                                <span class="text-muted text-decoration-line-through ms-2" style="font-size: 0.9rem;">${{ number_format($product->price, 2) }}</span>
+                                                <span class="text-danger">€{{ number_format($product->discount_price, 2) }}</span>
+                                                <span class="text-muted text-decoration-line-through ms-2" style="font-size: 0.9rem;">€{{ number_format($product->price, 2) }}</span>
                                             @else
-                                                ${{ number_format($product->price, 2) }}
+                                                €{{ number_format($product->price, 2) }}
                                             @endif
                                         </strong>
 

@@ -192,15 +192,15 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $item->quantity }}</td>
-                                                    <td>${{ number_format($item->price, 2) }}</td>
-                                                    <td><strong>${{ number_format($item->total, 2) }}</strong></td>
+                                                    <td>€{{ number_format($item->price, 2) }}</td>
+                                                    <td><strong>€{{ number_format($item->total, 2) }}</strong></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th colspan="5" class="text-right">Subtotal:</th>
-                                                <th>${{ number_format($order->subtotal, 2) }}</th>
+                                                <th>€{{ number_format($order->subtotal, 2) }}</th>
                                             </tr>
                                             @if($order->discount_amount > 0)
                                             <tr>
@@ -210,12 +210,12 @@
                                                         <br><small class="text-muted">({{ $order->coupon_code }})</small>
                                                     @endif
                                                 </th>
-                                                <th class="text-success">-${{ number_format($order->discount_amount, 2) }}</th>
+                                                <th class="text-success">-€{{ number_format($order->discount_amount, 2) }}</th>
                                             </tr>
                                             @endif
                                             <tr>
                                                 <th colspan="5" class="text-right">Total:</th>
-                                                <th class="text-primary">${{ number_format($order->total, 2) }}</th>
+                                                <th class="text-primary">€{{ number_format($order->total, 2) }}</th>
                                             </tr>
                                         </tfoot>
                                     </table>

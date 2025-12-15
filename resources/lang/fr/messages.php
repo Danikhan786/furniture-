@@ -27,7 +27,7 @@ return [
     'whyChoose.title' => 'Pourquoi nous choisir',
     'whyChoose.description' => 'Nous nous engageons à vous fournir le mobilier de la plus haute qualité qui améliore la beauté et le confort de votre maison. Notre collection soigneusement sélectionnée comprend des pièces conçues pour durer des générations.',
     'whyChoose.fastShipping' => 'Livraison rapide et gratuite',
-    'whyChoose.fastShippingDesc' => 'Profitez de la livraison gratuite sur toutes les commandes de plus de 500 $. Nous garantissons une livraison sûre et ponctuelle à votre porte.',
+    'whyChoose.fastShippingDesc' => 'Nous garantissons une livraison sûre et ponctuelle à votre porte.',
     'whyChoose.easyShop' => 'Facile à magasiner',
     'whyChoose.easyShopDesc' => 'Parcourez notre vaste catalogue en toute simplicité. Notre site convivial rend la recherche de votre mobilier parfait simple et agréable.',
     'whyChoose.support' => 'Support 24/7',

@@ -140,8 +140,8 @@
                     <tr>
                         <td>{{ $item->product->name ?? 'Product Deleted' }}</td>
                         <td>{{ $item->quantity }}</td>
-                        <td>${{ number_format($item->price, 2) }}</td>
-                        <td>${{ number_format($item->total, 2) }}</td>
+                        <td>€{{ number_format($item->price, 2) }}</td>
+                        <td>€{{ number_format($item->total, 2) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -152,7 +152,7 @@
             <table>
                 <tr>
                     <th>Subtotal</th>
-                    <td>${{ number_format($order->subtotal, 2) }}</td>
+                    <td>€{{ number_format($order->subtotal, 2) }}</td>
                 </tr>
                 @if($order->discount_amount > 0)
                 <tr>
@@ -161,12 +161,12 @@
                             ({{ $order->coupon_code }})
                         @endif
                     </th>
-                    <td>-${{ number_format($order->discount_amount, 2) }}</td>
+                    <td>-€{{ number_format($order->discount_amount, 2) }}</td>
                 </tr>
                 @endif
                 <tr class="total">
                     <th>Total</th>
-                    <td>${{ number_format($order->total, 2) }}</td>
+                    <td>€{{ number_format($order->total, 2) }}</td>
                 </tr>
             </table>
         </div>

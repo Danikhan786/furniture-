@@ -27,7 +27,7 @@ return [
     'whyChoose.title' => 'Why Choose Us',
     'whyChoose.description' => 'We are committed to providing you with the finest quality furniture that enhances your home\'s beauty and comfort. Our carefully curated collection features pieces designed to last for generations.',
     'whyChoose.fastShipping' => 'Fast & Free Shipping',
-    'whyChoose.fastShippingDesc' => 'Enjoy free shipping on all orders over $500. We ensure safe and timely delivery to your doorstep.',
+    'whyChoose.fastShippingDesc' => 'We ensure safe and timely delivery to your doorstep.',
     'whyChoose.easyShop' => 'Easy to Shop',
     'whyChoose.easyShopDesc' => 'Browse our extensive catalog with ease. Our user-friendly website makes finding your perfect furniture simple and enjoyable.',
     'whyChoose.support' => '24/7 Support',

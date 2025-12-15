@@ -103,7 +103,7 @@
                                                 <tr>
                                                     <td>{{ $item->product->name ?? __('messages.orderLookup.product') }}</td>
                                                     <td class="text-center">{{ $item->quantity }}</td>
-                                                    <td class="text-end">${{ number_format($item->price * $item->quantity, 2) }}</td>
+                                                    <td class="text-end">€{{ number_format($item->price * $item->quantity, 2) }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -112,11 +112,11 @@
 
                                 <div class="d-flex justify-content-end">
                                     <div class="text-end">
-                                        <p class="mb-1"><strong>{{ __('messages.orderLookup.subtotal') }}</strong> ${{ number_format($order->subtotal, 2) }}</p>
+                                        <p class="mb-1"><strong>{{ __('messages.orderLookup.subtotal') }}</strong> €{{ number_format($order->subtotal, 2) }}</p>
                                         @if($order->discount_amount > 0)
-                                            <p class="mb-1"><strong>{{ __('messages.orderLookup.discount') }}</strong> -${{ number_format($order->discount_amount, 2) }}</p>
+                                            <p class="mb-1"><strong>{{ __('messages.orderLookup.discount') }}</strong> -€{{ number_format($order->discount_amount, 2) }}</p>
                                         @endif
-                                        <p class="mb-0 fs-5"><strong>{{ __('messages.orderLookup.total') }}</strong> ${{ number_format($order->total, 2) }}</p>
+                                        <p class="mb-0 fs-5"><strong>{{ __('messages.orderLookup.total') }}</strong> €{{ number_format($order->total, 2) }}</p>
                                     </div>
                                 </div>
                             </div>

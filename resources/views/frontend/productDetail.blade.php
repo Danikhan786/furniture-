@@ -71,16 +71,16 @@
                             @if ($product->discount_price)
                                 <div class="d-flex align-items-center gap-3">
                                     <strong class="product-price text-danger"
-                                        style="font-size: 2rem;">${{ number_format($product->discount_price, 2) }}</strong>
+                                        style="font-size: 2rem;">€{{ number_format($product->discount_price, 2) }}</strong>
                                     <strong class="product-price text-muted text-decoration-line-through"
-                                        style="font-size: 1.5rem;">${{ number_format($product->price, 2) }}</strong>
+                                        style="font-size: 1.5rem;">€{{ number_format($product->price, 2) }}</strong>
                                     @if ($product->discount_percent)
                                         <span class="badge bg-danger">{{ round($product->discount_percent) }}% OFF</span>
                                     @endif
                                 </div>
                             @else
                                 <strong class="product-price"
-                                    style="font-size: 2rem;">${{ number_format($product->price, 2) }}</strong>
+                                    style="font-size: 2rem;">€{{ number_format($product->price, 2) }}</strong>
                             @endif
                         </div>
 
@@ -395,9 +395,9 @@
                                 <h3 class="product-title">{{ $relatedProduct->name }}</h3>
                                 <strong class="product-price">
                                     @if ($relatedProduct->discount_price)
-                                        ${{ number_format($relatedProduct->discount_price, 2) }}
+                                        €{{ number_format($relatedProduct->discount_price, 2) }}
                                     @else
-                                        ${{ number_format($relatedProduct->price, 2) }}
+                                        €{{ number_format($relatedProduct->price, 2) }}
                                     @endif
                                 </strong>
 

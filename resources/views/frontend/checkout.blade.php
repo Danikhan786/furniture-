@@ -199,12 +199,12 @@
                                                             {{ __('messages.cart.productNotAvailable') }} <strong class="mx-2">x</strong> {{ $item->quantity }}
                                                         @endif
                                                     </td>
-                                                    <td>${{ number_format($item->price * $item->quantity, 2) }}</td>
+                                                    <td>€{{ number_format($item->price * $item->quantity, 2) }}</td>
                                                 </tr>
                                             @endforeach
                                             <tr>
                                                 <td class="text-black font-weight-bold"><strong>{{ __('messages.checkout.cartSubtotal') }}</strong></td>
-                                                <td class="text-black">${{ number_format($subtotal ?? 0, 2) }}</td>
+                                                <td class="text-black">€{{ number_format($subtotal ?? 0, 2) }}</td>
                                             </tr>
                                             @if(isset($coupon) && $coupon && isset($discountAmount) && $discountAmount > 0)
                                             <tr>
@@ -212,12 +212,12 @@
                                                     <strong>{{ __('messages.checkout.couponDiscount') }} ({{ $coupon->code }})</strong>
                                                     <br><small class="text-success">{{ $coupon->discount_percent }}% OFF</small>
                                                 </td>
-                                                <td class="text-success">-${{ number_format($discountAmount, 2) }}</td>
+                                                <td class="text-success">-€{{ number_format($discountAmount, 2) }}</td>
                                             </tr>
                                             @endif
                                             <tr>
                                                 <td class="text-black font-weight-bold"><strong>{{ __('messages.checkout.orderTotal') }}</strong></td>
-                                                <td class="text-black font-weight-bold"><strong>${{ number_format($total ?? 0, 2) }}</strong></td>
+                                                <td class="text-black font-weight-bold"><strong>€{{ number_format($total ?? 0, 2) }}</strong></td>
                                             </tr>
                                         </tbody>
                                     </table>

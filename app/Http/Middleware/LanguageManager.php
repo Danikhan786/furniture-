@@ -19,9 +19,9 @@ class LanguageManager
         if (session()->has('locale')) {
             App::setLocale(session()->get('locale'));
         } else {
-            // Set default locale to English if no session locale is set
-            App::setLocale('en');
-            session()->put('locale', 'en');
+            // Set default locale to French if no session locale is set
+            App::setLocale('fr');
+            session()->put('locale', 'fr');
         }
 
         return $next($request);

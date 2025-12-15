@@ -214,7 +214,7 @@
                                                             <span class="text-muted">No items</span>
                                                         @endif
                                                     </td>
-                                                    <td><strong>${{ number_format($order->total, 2) }}</strong></td>
+                                                    <td><strong>€{{ number_format($order->total, 2) }}</strong></td>
                                                     <td>
                                                         @if($order->status == 'pending')
                                                             <span class="badge badge-warning">Pending</span>
