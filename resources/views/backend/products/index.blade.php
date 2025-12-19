@@ -185,7 +185,7 @@
 
                         @if(isset($products) && $products->hasPages())
                             <div class="mt-4">
-                                {{ $products->links() }}
+                                {{ $products->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>

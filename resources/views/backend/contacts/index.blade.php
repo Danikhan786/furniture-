@@ -100,7 +100,7 @@
 
                         @if(isset($contacts) && $contacts->hasPages())
                             <div class="mt-4">
-                                {{ $contacts->links() }}
+                                {{ $contacts->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>

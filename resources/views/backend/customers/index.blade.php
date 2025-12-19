@@ -109,7 +109,7 @@
 
                         @if(isset($customers) && $customers->hasPages())
                             <div class="mt-4">
-                                {{ $customers->links() }}
+                                {{ $customers->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>

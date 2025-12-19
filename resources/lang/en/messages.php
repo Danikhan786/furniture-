@@ -59,9 +59,12 @@ return [
     
     // Testimonials
     'testimonials.title' => 'Testimonials',
-    'testimonials.testimonial1' => 'I absolutely love my new furniture! The quality is exceptional and the customer service was outstanding. The pieces arrived on time and look even better in person than online. Highly recommend!',
-    'testimonials.author1' => 'Sarah Johnson',
-    'testimonials.position1' => 'Homeowner, New York',
+    'testimonials.testimonial1' => 'The furniture is absolutely beautiful! Thank you so much for such wonderful products. I couldn\'t be happier with my purchase.',
+    'testimonials.author1' => 'Linda',
+    'testimonials.testimonial2' => 'I am very happy and satisfied with your product. The quality exceeded my expectations, and I would definitely recommend your furniture to others.',
+    'testimonials.author2' => 'Dounia',
+    'testimonials.testimonial3' => 'I am very pleased with the storage beds, especially the children\'s beds. The mattresses are truly comfortable and of excellent quality, just as you promised. The speed and efficiency of the delivery team were very satisfying. Overall, I am extremely satisfied with your products and will definitely recommend you to my friends and family. Thank you!',
+    'testimonials.author3' => 'JK',
     
     // User Menu
     'user.adminDashboard' => 'Admin Dashboard',

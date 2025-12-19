@@ -157,7 +157,7 @@
                             <div class="row mt-5">
                                 <div class="col-12">
                                     <div class="d-flex justify-content-center">
-                                        {{ $products->links() }}
+                                        {{ $products->links('pagination.custom') }}
                                     </div>
                                 </div>
                             </div>

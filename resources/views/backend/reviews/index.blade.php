@@ -143,7 +143,7 @@
 
                         @if(isset($reviews) && $reviews->hasPages())
                             <div class="mt-4">
-                                {{ $reviews->links() }}
+                                {{ $reviews->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>

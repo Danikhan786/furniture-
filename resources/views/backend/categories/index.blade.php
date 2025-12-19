@@ -123,7 +123,7 @@
 
                         @if(isset($categories) && $categories->hasPages())
                             <div class="mt-4">
-                                {{ $categories->links() }}
+                                {{ $categories->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>

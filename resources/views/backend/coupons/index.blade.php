@@ -123,7 +123,7 @@
 
                         @if(isset($coupons) && $coupons->hasPages())
                             <div class="mt-4">
-                                {{ $coupons->links() }}
+                                {{ $coupons->links('pagination.backend') }}
                             </div>
                         @endif
                     </div>
