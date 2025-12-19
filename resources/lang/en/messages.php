@@ -59,12 +59,12 @@ return [
     
     // Testimonials
     'testimonials.title' => 'Testimonials',
-    'testimonials.testimonial1' => 'The furniture is absolutely beautiful! Thank you so much for such wonderful products. I couldn\'t be happier with my purchase.',
-    'testimonials.author1' => 'Linda',
+    'testimonials.testimonial3' => 'The furniture is absolutely beautiful! Thank you so much for such wonderful products.',
+    'testimonials.author3' => 'Linda',
     'testimonials.testimonial2' => 'I am very happy and satisfied with your product. The quality exceeded my expectations, and I would definitely recommend your furniture to others.',
     'testimonials.author2' => 'Dounia',
-    'testimonials.testimonial3' => 'I am very pleased with the storage beds, especially the children\'s beds. The mattresses are truly comfortable and of excellent quality, just as you promised. The speed and efficiency of the delivery team were very satisfying. Overall, I am extremely satisfied with your products and will definitely recommend you to my friends and family. Thank you!',
-    'testimonials.author3' => 'JK',
+    'testimonials.testimonial1' => 'I am very pleased with the storage beds, especially the children\'s beds. The mattresses are truly comfortable and of excellent quality, just as you promised. The speed and efficiency of the delivery team were very satisfying. Overall, I am extremely satisfied with your products and will definitely recommend you to my friends and family. Thank you!',
+    'testimonials.author1' => 'JK',
     
     // User Menu
     'user.adminDashboard' => 'Admin Dashboard',

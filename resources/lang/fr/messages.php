@@ -59,12 +59,12 @@ return [
     
     // Testimonials
     'testimonials.title' => 'Témoignages',
-    'testimonials.testimonial1' => 'Le mobilier est absolument magnifique ! Merci beaucoup pour des produits si merveilleux. Je ne pourrais pas être plus heureuse de mon achat.',
-    'testimonials.author1' => 'Linda',
+    'testimonials.testimonial3' => 'Le mobilier est absolument magnifique ! Merci beaucoup pour des produits si merveilleux.',
+    'testimonials.author3' => 'Linda',
     'testimonials.testimonial2' => 'Je suis très heureuse et satisfaite de votre produit. La qualité a dépassé mes attentes et je recommanderais définitivement votre mobilier à d\'autres.',
     'testimonials.author2' => 'Dounia',
-    'testimonials.testimonial3' => 'Je suis très satisfaite des lits coffre, en particulier des lits enfants. Les matelas sont vraiment confortables et d\'excellente qualité, comme vous l\'aviez promis. La rapidité et l\'efficacité de l\'équipe de livraison ont été très satisfaisantes. Dans l\'ensemble, je suis extrêmement satisfaite de vos produits et je vous recommanderai définitivement à mes amis et à ma famille. Merci !',
-    'testimonials.author3' => 'JK',
+    'testimonials.testimonial1' => 'Je suis très satisfaite des lits coffre, en particulier des lits enfants. Les matelas sont vraiment confortables et d\'excellente qualité, comme vous l\'aviez promis. La rapidité et l\'efficacité de l\'équipe de livraison ont été très satisfaisantes. Dans l\'ensemble, je suis extrêmement satisfaite de vos produits et je vous recommanderai définitivement à mes amis et à ma famille. Merci !',
+    'testimonials.author1' => 'JK',
     
     // User Menu
     'user.adminDashboard' => 'Tableau de bord Admin',

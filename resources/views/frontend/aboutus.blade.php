@@ -84,7 +84,7 @@
     
 
     <!-- Start Testimonial Slider -->
-    <div class="testimonial-section before-footer-section">
+    <div class="testimonial-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto text-center">
@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="testimonial-slider">
-                            
+
                             <div class="item">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 mx-auto">
@@ -113,17 +113,13 @@
                                             </blockquote>
 
                                             <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
-                                                </div>
                                                 <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
-                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- END item -->
 
                             <div class="item">
@@ -132,21 +128,17 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial2') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
-                                                </div>
-                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
-                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author2') }}</h3>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- END item -->
 
                             <div class="item">
@@ -155,21 +147,17 @@
 
                                         <div class="testimonial-block text-center">
                                             <blockquote class="mb-5">
-                                                <p>&ldquo;{{ __('messages.testimonials.testimonial1') }}&rdquo;</p>
+                                                <p>&ldquo;{{ __('messages.testimonials.testimonial3') }}&rdquo;</p>
                                             </blockquote>
 
                                             <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="frontend/images/person-1.png" alt="Maria Jones" class="img-fluid">
-                                                </div>
-                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author1') }}</h3>
-                                                <span class="position d-block mb-3">{{ __('messages.testimonials.position1') }}</span>
+                                                <h3 class="font-weight-bold">{{ __('messages.testimonials.author3') }}</h3>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- END item -->
 
                         </div>
