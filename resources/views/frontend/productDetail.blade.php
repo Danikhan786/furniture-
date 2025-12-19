@@ -28,7 +28,7 @@
                             <img id="main-product-image"
                                 src="{{ $product->image ? asset($product->image) : '../../frontend/images/product-1.png' }}"
                                 alt="{{ $product->name }}" class="img-fluid rounded"
-                                style="width: 100%; height: 500px; object-fit: cover;">
+                                style="width: 100%; object-fit: cover;">
                         </div>
 
                         <!-- Thumbnail Gallery -->
